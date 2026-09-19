@@ -1,0 +1,339 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
+  <defs>
+    <!-- Background Gradient -->
+    <radialGradient id="bg-glow" cx="50%" cy="50%" r="68%" fx="46%" fy="46%">
+      <stop offset="0%" stop-color="#4d088c" />
+      <stop offset="50%" stop-color="#26034f" />
+      <stop offset="100%" stop-color="#120126" />
+    </radialGradient>
+
+    <!-- Face 3D Shading Gradients -->
+    <radialGradient id="face-base" cx="46%" cy="46%" r="58%">
+      <stop offset="0%" stop-color="#f5cfbf" />
+      <stop offset="50%" stop-color="#e2b19e" />
+      <stop offset="78%" stop-color="#ca9382" />
+      <stop offset="100%" stop-color="#995874" />
+    </radialGradient>
+
+    <radialGradient id="face-chin-purple-bounce" cx="50%" cy="85%" r="45%">
+      <stop offset="0%" stop-color="#a843d4" stop-opacity="0.85" />
+      <stop offset="50%" stop-color="#731f99" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#731f99" stop-opacity="0" />
+    </radialGradient>
+
+    <radialGradient id="face-left-purple-rim" cx="20%" cy="50%" r="45%">
+      <stop offset="0%" stop-color="#b457e8" stop-opacity="0.9" />
+      <stop offset="40%" stop-color="#8021b3" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#8021b3" stop-opacity="0" />
+    </radialGradient>
+
+    <radialGradient id="face-right-rim" cx="80%" cy="55%" r="40%">
+      <stop offset="0%" stop-color="#f096ff" stop-opacity="0.75" />
+      <stop offset="40%" stop-color="#a433c2" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#a433c2" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Sunglasses Lens Gradients -->
+    <linearGradient id="lens-grad" x1="20%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%" stop-color="#181824" />
+      <stop offset="45%" stop-color="#0a0a0f" />
+      <stop offset="75%" stop-color="#13101c" />
+      <stop offset="100%" stop-color="#241a38" />
+    </linearGradient>
+
+    <linearGradient id="lens-sheen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.5" />
+      <stop offset="25%" stop-color="#ffffff" stop-opacity="0.1" />
+      <stop offset="60%" stop-color="#b26bff" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+    </linearGradient>
+
+    <!-- Hair Shading -->
+    <radialGradient id="hair-base" cx="48%" cy="30%" r="55%">
+      <stop offset="0%" stop-color="#242833" />
+      <stop offset="45%" stop-color="#12141a" />
+      <stop offset="85%" stop-color="#08080c" />
+      <stop offset="100%" stop-color="#040406" />
+    </radialGradient>
+
+    <!-- Ear Shading -->
+    <radialGradient id="ear-grad-l" cx="60%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#ebb9a7" />
+      <stop offset="70%" stop-color="#ba7a6f" />
+      <stop offset="100%" stop-color="#8021b3" />
+    </radialGradient>
+    <radialGradient id="ear-grad-r" cx="40%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#ebb9a7" />
+      <stop offset="70%" stop-color="#ba7a6f" />
+      <stop offset="100%" stop-color="#9d32b5" />
+    </radialGradient>
+
+    <!-- Soft Filter Shadows -->
+    <filter id="shadow-blur" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="16" />
+    </filter>
+    <filter id="soft-glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="28" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <filter id="hair-fur-blur" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="3.5" />
+    </filter>
+  </defs>
+
+  <!-- Deep Purple Violet Studio Background -->
+  <rect width="1000" height="1000" fill="url(#bg-glow)" />
+
+  <!-- Ambient Head Aura / Glow -->
+  <ellipse cx="500" cy="540" rx="270" ry="290" fill="#6916a0" opacity="0.4" filter="url(#shadow-blur)" />
+  <ellipse cx="500" cy="530" rx="210" ry="230" fill="#8c28cf" opacity="0.25" filter="url(#shadow-blur)" />
+
+  <!-- MAIN CHARACTER GROUP -->
+  <g id="rebel-character">
+    
+    <!-- EARS -->
+    <!-- Left Ear (viewer left) -->
+    <g id="ear-left">
+      <path d="M 245,530 C 205,530 195,570 215,620 C 235,660 270,690 285,670 C 295,655 285,600 275,560 Z" fill="url(#ear-grad-l)" />
+      <path d="M 235,555 C 220,575 225,605 240,625 C 250,635 260,630 260,615 C 260,590 245,570 235,555 Z" fill="#75303a" opacity="0.45" />
+      <!-- Silver Piercing / Spiked Stud -->
+      <circle cx="238" cy="625" r="4.5" fill="#f0f0ff" stroke="#333" stroke-width="1.5" />
+      <!-- Dangling Spike -->
+      <polygon points="238,628 235,655 241,655" fill="#ffffff" stroke="#8c92a4" stroke-width="1" />
+      <polygon points="275,700 272,748 278,748" fill="#e8ecf8" opacity="0.9" />
+    </g>
+
+    <!-- Right Ear (viewer right) -->
+    <g id="ear-right">
+      <path d="M 755,530 C 795,530 805,570 785,620 C 765,660 730,690 715,670 C 705,655 715,600 725,560 Z" fill="url(#ear-grad-r)" />
+      <path d="M 765,555 C 780,575 775,605 760,625 C 750,635 740,630 740,615 C 740,590 755,570 765,555 Z" fill="#75303a" opacity="0.45" />
+      <!-- Silver Cross Earring Dangle -->
+      <circle cx="705" cy="690" r="4" fill="#ffffff" stroke="#606677" stroke-width="1" />
+      <g transform="translate(705, 705)">
+        <rect x="-2" y="-12" width="4" height="24" rx="1.5" fill="#ffffff" stroke="#6b7280" stroke-width="0.8" />
+        <rect x="-8" y="-6" width="16" height="4" rx="1.5" fill="#ffffff" stroke="#6b7280" stroke-width="0.8" />
+        <circle cx="0" cy="-4" r="1.5" fill="#a5b4fc" />
+      </g>
+    </g>
+
+    <!-- FACE MESH (Smooth 3D chin, cheeks, forehead) -->
+    <g id="face-base-group">
+      <!-- Base Head Shape -->
+      <path d="M 270,490 
+               C 260,600 320,770 420,835 
+               C 460,860 540,860 580,835 
+               C 680,770 740,600 730,490 
+               C 720,380 670,300 500,300 
+               C 330,300 280,380 270,490 Z" 
+            fill="url(#face-base)" />
+
+      <!-- Purple Bounce Light on Jawline and Chin -->
+      <path d="M 270,490 
+               C 260,600 320,770 420,835 
+               C 460,860 540,860 580,835 
+               C 680,770 740,600 730,490 
+               C 680,770 580,835 500,845 
+               C 420,835 320,770 270,490 Z" 
+            fill="url(#face-chin-purple-bounce)" />
+
+      <!-- Left Side Rim Light -->
+      <path d="M 270,490 C 260,600 320,770 420,835 C 360,760 300,640 300,490 C 300,400 330,340 370,310 C 330,320 280,380 270,490 Z" 
+            fill="url(#face-left-purple-rim)" />
+
+      <!-- Right Side Rim Light -->
+      <path d="M 730,490 C 740,600 680,770 580,835 C 640,760 700,640 700,490 C 700,400 670,340 630,310 C 670,320 720,380 730,490 Z" 
+            fill="url(#face-right-rim)" />
+    </g>
+
+    <!-- NOSE & FRECKLES & NOSE HIGHLIGHT -->
+    <g id="nose-and-freckles">
+      <!-- Nose Soft Shading -->
+      <path d="M 480,590 C 475,640 460,685 460,700 C 460,715 480,725 500,725 C 520,725 540,715 540,700 C 540,685 525,640 520,590 Z" 
+            fill="#ba7a6f" opacity="0.35" />
+      <!-- Nose Tip 3D Highlight -->
+      <ellipse cx="500" cy="695" rx="14" ry="11" fill="#fce4db" opacity="0.6" />
+      <ellipse cx="497" cy="693" rx="6" ry="4" fill="#ffffff" opacity="0.75" />
+      <!-- Nostril Shadows -->
+      <ellipse cx="468" cy="705" rx="7" ry="4" fill="#6d2b38" opacity="0.5" />
+      <ellipse cx="532" cy="705" rx="7" ry="4" fill="#6d2b38" opacity="0.5" />
+      <!-- Soft Nose Bridge Ridge -->
+      <path d="M 495,570 L 493,670 L 507,670 L 505,570 Z" fill="#ffece3" opacity="0.3" filter="url(#hair-fur-blur)" />
+
+      <!-- Freckles (organic scattering across cheeks and nose) -->
+      <g fill="#7e3c35" opacity="0.55">
+        <circle cx="440" cy="670" r="2.2" /><circle cx="452" cy="682" r="1.8" />
+        <circle cx="435" cy="690" r="1.5" /><circle cx="420" cy="675" r="2.0" />
+        <circle cx="458" cy="665" r="1.6" /><circle cx="470" cy="678" r="2.4" />
+        <circle cx="482" cy="668" r="1.8" /><circle cx="490" cy="680" r="2.2" />
+        <circle cx="508" cy="676" r="1.9" /><circle cx="518" cy="683" r="2.1" />
+        <circle cx="528" cy="668" r="1.7" /><circle cx="542" cy="675" r="2.3" />
+        <circle cx="555" cy="685" r="1.6" /><circle cx="568" cy="670" r="2.0" />
+        <circle cx="580" cy="682" r="1.8" /><circle cx="448" cy="700" r="1.5" />
+        <circle cx="550" cy="702" r="1.7" /><circle cx="430" cy="705" r="1.8" />
+        <circle cx="565" cy="695" r="2.2" /><circle cx="465" cy="692" r="1.9" />
+        <circle cx="535" cy="690" r="2.0" /><circle cx="478" cy="685" r="1.6" />
+      </g>
+    </g>
+
+    <!-- REBEL GOTHIC TATTOO ON CHEEK -->
+    <g id="rebel-tattoo" transform="translate(552, 706) rotate(6)">
+      <text x="0" y="0" font-family="'UnifrakturCook', 'MedievalSharp', 'Pirata One', 'Old English Text MT', 'Cloister Black', cursive, serif" font-size="28" font-weight="bold" fill="#18141e" letter-spacing="1.5" opacity="0.85">Rebel</text>
+      <!-- Subtle Ink Blur -->
+      <text x="0" y="0" font-family="'UnifrakturCook', 'MedievalSharp', cursive, serif" font-size="28" font-weight="bold" fill="#502444" letter-spacing="1.5" opacity="0.25" filter="url(#hair-fur-blur)">Rebel</text>
+    </g>
+
+    <!-- MOLES / BEAUTY MARKS -->
+    <!-- Beauty mark under bottom lip right side -->
+    <circle cx="552" cy="808" r="2.6" fill="#201018" opacity="0.85" />
+    <!-- Small mole near brow / temple -->
+    <circle cx="425" cy="555" r="2.3" fill="#24121b" opacity="0.8" />
+
+    <!-- LIPS (Glossy stylized 3D pout with specular highlight) -->
+    <g id="lips">
+      <!-- Upper Lip -->
+      <path d="M 410,772 C 455,758 485,765 500,772 C 515,765 545,758 590,772 C 560,782 525,785 500,782 C 475,785 440,782 410,772 Z" 
+            fill="#a64a5c" />
+      <path d="M 430,772 C 470,762 490,768 500,772 C 510,768 530,762 570,772 C 545,778 520,780 500,778 C 480,780 455,778 430,772 Z" 
+            fill="#782338" opacity="0.6" />
+      <!-- Lip Line Separation -->
+      <path d="M 405,772 C 455,774 485,770 500,776 C 515,770 545,774 595,772 C 555,777 525,780 500,780 C 475,780 445,777 405,772 Z" 
+            fill="#380816" />
+      <!-- Lower Lip (Plump 3D volume) -->
+      <path d="M 412,773 C 450,782 475,802 500,802 C 525,802 550,782 588,773 C 565,810 535,822 500,822 C 465,822 435,810 412,773 Z" 
+            fill="#b8566a" />
+      <!-- Lower Lip Gloss Highlight -->
+      <ellipse cx="498" cy="796" rx="28" ry="8" fill="#ffd4dc" opacity="0.65" />
+      <ellipse cx="496" cy="795" rx="14" ry="3.5" fill="#ffffff" opacity="0.85" />
+      <ellipse cx="470" cy="788" rx="6" ry="2" fill="#ffffff" opacity="0.6" />
+      <ellipse cx="528" cy="788" rx="7" ry="2" fill="#ffffff" opacity="0.6" />
+      <!-- Chin Crease Shadow -->
+      <path d="M 470,832 C 485,836 515,836 530,832" stroke="#682433" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.4" />
+    </g>
+
+    <!-- SUNGLASSES (Designer chunky streetwear wrapped frames with glossy reflection) -->
+    <g id="sunglasses" filter="url(#soft-glow)">
+      <!-- Frame Drop Shadow onto face -->
+      <path d="M 230,525 C 230,495 380,515 490,535 C 500,537 510,537 520,535 C 630,515 780,495 780,525 C 775,645 660,735 550,695 C 520,685 490,685 460,695 C 350,735 235,645 230,525 Z" 
+            fill="#06020c" opacity="0.6" filter="url(#shadow-blur)" transform="translate(0, 15)" />
+
+      <!-- Left Lens Frame Outer -->
+      <path d="M 232,545 
+               C 230,490 365,520 480,550 
+               C 488,552 490,565 482,572 
+               C 455,600 440,650 370,690 
+               C 290,735 240,640 232,545 Z" 
+            fill="#0b0b12" stroke="#1f1d2c" stroke-width="8" stroke-linejoin="round" />
+
+      <!-- Right Lens Frame Outer -->
+      <path d="M 768,545 
+               C 770,490 635,520 520,550 
+               C 512,552 510,565 518,572 
+               C 545,600 560,650 630,690 
+               C 710,735 760,640 768,545 Z" 
+            fill="#0b0b12" stroke="#1f1d2c" stroke-width="8" stroke-linejoin="round" />
+
+      <!-- Center Bridge Bar -->
+      <path d="M 470,552 C 485,556 515,556 530,552 L 532,568 C 515,575 485,575 468,568 Z" 
+            fill="#0e0e18" stroke="#252436" stroke-width="3" />
+
+      <!-- Left Dark Lens -->
+      <path d="M 252,552 
+               C 255,510 375,532 468,560 
+               C 450,600 425,645 365,676 
+               C 300,710 260,630 252,552 Z" 
+            fill="url(#lens-grad)" />
+
+      <!-- Right Dark Lens -->
+      <path d="M 748,552 
+               C 745,510 625,532 532,560 
+               C 550,600 575,645 635,676 
+               C 700,710 740,630 748,552 Z" 
+            fill="url(#lens-grad)" />
+
+      <!-- Lens Gloss & Horizon Curvature Reflection (Left Lens) -->
+      <path d="M 265,565 C 310,545 400,560 450,578 C 420,625 365,640 300,645 C 275,615 268,585 265,565 Z" 
+            fill="url(#lens-sheen)" />
+      <!-- Sharp White Reflection Blade (Left) -->
+      <path d="M 270,568 C 320,550 410,570 445,582 C 440,586 330,565 272,576 Z" fill="#ffffff" opacity="0.85" />
+      <ellipse cx="285" cy="590" rx="18" ry="40" transform="rotate(-35 285 590)" fill="#ffffff" opacity="0.18" filter="url(#hair-fur-blur)" />
+
+      <!-- Lens Gloss & Horizon Curvature Reflection (Right Lens) -->
+      <path d="M 735,565 C 690,545 600,560 550,578 C 580,625 635,640 700,645 C 725,615 732,585 735,565 Z" 
+            fill="url(#lens-sheen)" />
+      <!-- Sharp White Reflection Blade (Right) -->
+      <path d="M 730,568 C 680,550 590,570 555,582 C 560,586 670,565 728,576 Z" fill="#ffffff" opacity="0.85" />
+      <ellipse cx="715" cy="590" rx="18" ry="40" transform="rotate(35 715 590)" fill="#ffffff" opacity="0.18" filter="url(#hair-fur-blur)" />
+
+      <!-- Top Frame Specular Rim Highlights -->
+      <path d="M 240,535 C 310,520 420,540 480,555" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.65" />
+      <path d="M 760,535 C 690,520 580,540 520,555" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.65" />
+      <path d="M 485,555 C 500,558 515,558 530,555" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.8" />
+    </g>
+
+    <!-- VOLUMINOUS FLUFFY STREETWEAR HAIR -->
+    <g id="hair-group">
+      <!-- Back Hair Shadow Silhouette -->
+      <path d="M 180,420 
+               C 160,320 230,190 320,150 
+               C 390,120 460,160 500,140 
+               C 540,120 620,110 690,150 
+               C 780,190 840,320 820,420 
+               C 805,490 770,540 740,550 
+               C 750,450 710,380 670,360 
+               C 620,340 570,390 500,370 
+               C 430,390 380,340 330,360 
+               C 290,380 250,450 260,550 
+               C 230,540 195,490 180,420 Z" 
+            fill="#07070b" />
+
+      <!-- Main Layered Hair Mass -->
+      <path d="M 195,430 
+               C 175,330 210,240 280,180 
+               C 320,150 370,170 410,140 
+               C 450,110 520,130 570,120 
+               C 640,110 710,150 760,200 
+               C 820,260 815,360 790,440 
+               C 760,400 710,360 670,380 
+               C 610,410 560,470 500,470 
+               C 440,470 390,410 330,380 
+               C 290,360 240,400 195,430 Z" 
+            fill="url(#hair-base)" />
+
+      <!-- Fluffy Hair Tufts & Wavy Locks (Top Volume) -->
+      <!-- Left Tuft -->
+      <path d="M 230,240 C 210,180 280,130 330,150 C 370,165 370,210 340,240 C 300,270 245,265 230,240 Z" fill="#1b1e28" />
+      <!-- Center-Left Wild Tufts -->
+      <path d="M 330,170 C 330,100 420,110 440,160 C 455,195 415,225 375,220 C 345,215 330,195 330,170 Z" fill="#242834" />
+      <path d="M 410,140 C 430,90 510,95 530,140 C 545,175 510,210 470,210 C 435,210 410,175 410,140 Z" fill="#1e212b" />
+      <!-- Center-Right Crown Tufts -->
+      <path d="M 490,130 C 530,80 620,90 630,150 C 640,190 595,220 550,215 C 510,210 490,175 490,130 Z" fill="#292e3d" />
+      <!-- Right Fluff -->
+      <path d="M 590,150 C 640,110 730,140 730,205 C 730,250 675,270 635,255 C 600,240 585,190 590,150 Z" fill="#1e222c" />
+      <path d="M 680,210 C 740,180 800,240 780,310 C 765,350 715,350 690,325 C 665,300 660,240 680,210 Z" fill="#141720" />
+
+      <!-- Forehead Fringe / Bangs (Falling naturally above the sunglasses) -->
+      <!-- Left lock dipping toward left eye -->
+      <path d="M 280,380 C 270,440 310,530 350,530 C 370,530 380,480 370,430 C 360,390 320,370 280,380 Z" fill="#0f1118" />
+      <path d="M 330,370 C 340,430 380,500 410,500 C 430,500 440,460 425,410 C 410,360 360,350 330,370 Z" fill="#171922" />
+      <!-- Center wisps -->
+      <path d="M 400,380 C 420,440 455,480 475,475 C 490,470 485,425 470,385 C 450,350 415,355 400,380 Z" fill="#0d0e14" />
+      <!-- Middle bang with edgy angle -->
+      <path d="M 460,380 C 480,430 520,490 540,480 C 555,470 540,420 520,380 C 500,350 470,355 460,380 Z" fill="#1c1f2b" />
+      <!-- Right swooping lock -->
+      <path d="M 520,380 C 550,440 610,520 640,510 C 660,500 645,435 620,390 C 590,350 540,350 520,380 Z" fill="#11131a" />
+      <path d="M 610,380 C 640,430 685,490 715,470 C 730,450 710,400 680,370 C 650,340 620,355 610,380 Z" fill="#181b24" />
+
+      <!-- Top Hair Purple Rim Lighting & Specular Strand Highlights -->
+      <g filter="url(#hair-fur-blur)" opacity="0.85">
+        <!-- Purple edge glow on top locks -->
+        <path d="M 250,210 C 310,140 430,110 500,120 C 580,110 690,130 750,190" stroke="#b457e8" stroke-width="12" fill="none" stroke-linecap="round" />
+        <path d="M 320,160 C 390,125 450,130 480,140" stroke="#f0abfc" stroke-width="6" fill="none" stroke-linecap="round" opacity="0.9" />
+        <path d="M 510,135 C 570,120 640,135 680,170" stroke="#d8b4fe" stroke-width="6" fill="none" stroke-linecap="round" opacity="0.8" />
+        <!-- Cyan/Violet subtle accent light -->
+        <path d="M 210,310 C 200,240 250,170 300,160" stroke="#818cf8" stroke-width="7" fill="none" stroke-linecap="round" opacity="0.6" />
+        <path d="M 780,290 C 790,220 740,160 700,150" stroke="#c084fc" stroke-width="7" fill="none" stroke-linecap="round" opacity="0.6" />
+      </g>
+    </g>
+
+  </g>
+</svg>

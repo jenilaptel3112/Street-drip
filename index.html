@@ -145,9 +145,113 @@
       .capsule-clip {
         border-radius: 9999px;
       }
+
+      /* 3D Perspective Card & Custom Cursor Animation */
+      .hero-3d-perspective {
+        perspective: 1000px;
+      }
+      .hero-card-tilt {
+        transform-style: preserve-3d;
+        transition: transform 0.08s ease-out;
+        will-change: transform;
+      }
+      .hero-card-tilt.reset-tilt {
+        transition: transform 0.5s cubic-bezier(0.2, 0.9, 0.3, 1);
+      }
+      .hero-sheen-overlay {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 15;
+        mix-blend-mode: screen;
+        opacity: 0;
+        transition: opacity 0.25s ease;
+      }
+      .hero-card-tilt:hover .hero-sheen-overlay {
+        opacity: 1;
+      }
+
+      /* Animated Cursor Reticle Follower */
+      .hero-cursor-reticle {
+        position: absolute;
+        pointer-events: none;
+        z-index: 50;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        transition: opacity 0.2s ease, transform 0.06s cubic-bezier(0.1, 0.9, 0.2, 1);
+      }
+      .hero-cursor-reticle.active {
+        opacity: 1;
+      }
+      .reticle-corner {
+        position: absolute;
+        width: 7px;
+        height: 7px;
+        pointer-events: none;
+      }
+      .reticle-tl { top: -10px; left: -10px; border-top: 2px solid #e2ff00; border-left: 2px solid #e2ff00; }
+      .reticle-tr { top: -10px; right: -10px; border-top: 2px solid #e2ff00; border-right: 2px solid #e2ff00; }
+      .reticle-bl { bottom: -10px; left: -10px; border-bottom: 2px solid #e2ff00; border-left: 2px solid #e2ff00; }
+      .reticle-br { bottom: -10px; right: -10px; border-bottom: 2px solid #e2ff00; border-right: 2px solid #e2ff00; }
+
+      @keyframes starSpinSlow {
+        0% { transform: rotate(0deg) scale(0.95); }
+        50% { transform: rotate(180deg) scale(1.15); }
+        100% { transform: rotate(360deg) scale(0.95); }
+      }
+      .animate-star-spin {
+        animation: starSpinSlow 5s linear infinite;
+      }
+
+      @keyframes crosshairPulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.12); }
+      }
+      .animate-crosshair {
+        animation: crosshairPulse 2s ease-in-out infinite;
+      }
+
+      /* Global Scroll & Mouse Reactive Cursor Reticle */
+      #site-scroll-cursor {
+        pointer-events: none;
+        position: fixed;
+        z-index: 9999;
+        transform: translate(-50%, -50%);
+        will-change: left, top, transform;
+        transition: opacity 0.25s ease;
+      }
+      .scroll-cursor-scrolling #scroll-cursor-ring {
+        border-color: #ff007f !important;
+        transform: scale(1.22) rotate(180deg);
+      }
+      .scroll-cursor-scrolling #scroll-cursor-brackets {
+        transform: scale(1.35);
+        border-color: #e2ff00 !important;
+      }
+      .scroll-cursor-scrolling #scroll-cursor-hud {
+        opacity: 1 !important;
+        transform: translateY(2px);
+      }
     </style>
   </head>
   <body class="street-wall-bg text-black font-sans antialiased selection:bg-hotpink selection:text-white min-h-screen flex flex-col relative overflow-x-hidden">
+
+    <!-- GLOBAL SCROLL-REACTIVE CYBER RETICLE CURSOR -->
+    <div id="site-scroll-cursor" class="hidden md:block opacity-0" aria-hidden="true">
+      <div class="relative w-10 h-10 flex items-center justify-center">
+        <!-- Outer Orbital Rotating Ring (Accelerates on scroll) -->
+        <div id="scroll-cursor-ring" class="absolute w-10 h-10 rounded-full border border-acid/60 border-dashed transition-all duration-150"></div>
+        <!-- Crosshair Cyber Brackets -->
+        <div id="scroll-cursor-brackets" class="absolute w-5 h-5 border-t border-b border-hotpink transition-all duration-100"></div>
+        <!-- Center Target Spark -->
+        <div id="scroll-cursor-dot" class="w-1.5 h-1.5 bg-acid rounded-full shadow-[0_0_6px_#e2ff00]"></div>
+      </div>
+      <!-- HUD Telemetry Label: Shows real-time scroll velocity and direction -->
+      <div id="scroll-cursor-hud" class="mt-1 -ml-6 bg-black/90 text-white font-mono text-[8px] font-bold px-1.5 py-0.5 border border-acid shadow-lg whitespace-nowrap opacity-0 transition-all duration-150 flex items-center gap-1">
+        <span class="text-hotpink font-bold" id="scroll-cursor-dir">▼</span>
+        <span id="scroll-cursor-hud-text">TRACKING</span>
+      </div>
+    </div>
 
     <!-- 1. TOP UTILITY MARQUEE TICKER (High-Voltage Acid Yellow & Hot Pink with Street Drip Store Info) -->
     <aside id="top-marquee" aria-label="Drop Announcement Ticker" class="bg-acid text-black font-mono text-[11px] font-bold tracking-wider uppercase py-1.5 border-b-2 border-black overflow-hidden sticky top-0 z-50 shadow-sm select-none">
@@ -365,9 +469,9 @@
               </div>
             </div>
 
-            <!-- Right Hero Imagery: Streetwear model in bounding box selection -->
-            <div class="md:col-span-5 relative flex justify-center">
-              <div class="artboard-bbox p-1 bg-white border border-black max-w-xs sm:max-w-sm w-full">
+            <!-- Right Hero Imagery: 3D Rebel Video & Animated Cursor Showcase -->
+            <div class="md:col-span-5 relative flex justify-center hero-3d-perspective">
+              <div id="hero-interactive-card" class="artboard-bbox hero-card-tilt p-1 bg-white border border-black max-w-xs sm:max-w-sm w-full shadow-2xl relative select-none">
                 <!-- Handles -->
                 <div class="bbox-handle bbox-tl"></div>
                 <div class="bbox-handle bbox-tr"></div>
@@ -376,16 +480,105 @@
                 <div class="bbox-handle bbox-tc"></div>
                 <div class="bbox-handle bbox-bc"></div>
 
-                <div class="relative overflow-hidden aspect-[3/4] bg-neutral-900 group">
+                <!-- 7th Child: Media Container with Video, Image fallback, and Cursor Animation -->
+                <div id="hero-media-container" class="relative overflow-hidden aspect-[3/4] bg-[#1a0538] group cursor-crosshair">
+                  
+                  <!-- Ambient Purple Studio Lighting Backdrop (Reacts in 3D parallax to cursor) -->
+                  <div id="avatar-bg-glow" class="absolute inset-0 bg-radial from-[#520994] via-[#24034b] to-[#100122] pointer-events-none transition-transform duration-75 will-change-transform"></div>
+
+                  <!-- 1. Stylized 3D Rebel Avatar Image (from User Image - High Res 3D Portrait) -->
                   <img 
-                    src="https://images.unsplash.com/photo-1509967419530-da38b4704bc6?q=80&w=900&auto=format&fit=crop" 
-                    alt="Street Drip Ahmedabad Model" 
-                    class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                    id="hero-rebel-img"
+                    src="/assets/rebel_avatar.png" 
+                    alt="Street Drip 3D Rebel Avatar Model with Sunglasses and Rebel Tattoo" 
+                    class="absolute inset-0 w-full h-full object-cover object-center pointer-events-none will-change-transform z-10 transition-transform duration-75 scale-[1.03]"
                   />
-                  <!-- Cyber digital distortion / yellow accent box like in image -->
-                  <div class="absolute bottom-3 left-3 bg-acid text-black font-mono text-[10px] font-bold px-2 py-1 border border-black shadow-sm">
-                    STREET DRIP // 004-CHANDKHEDA
+
+                  <!-- 2. Stylized 3D Rebel Video (Seamless looping, muted autoplay, responsive) -->
+                  <video 
+                    id="hero-rebel-video"
+                    src="/assets/rebel_avatar.mp4" 
+                    poster="/assets/rebel_avatar_poster.png"
+                    autoplay 
+                    loop 
+                    muted 
+                    playsinline
+                    preload="auto"
+                    class="absolute inset-0 w-full h-full object-cover object-center pointer-events-none will-change-transform opacity-0 z-10 transition-opacity duration-300 scale-100 group-hover:scale-105"
+                  ></video>
+
+                  <!-- Dynamic Specular Gloss Sheen Tracking Cursor Position over Sunglasses -->
+                  <div id="hero-sheen" class="hero-sheen-overlay z-20 opacity-90"></div>
+
+                  <!-- Subtle Scanline / Pixel Grid Overlay for Cyber Brutalist Vibe -->
+                  <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/5 to-black/35 pointer-events-none z-20"></div>
+
+                  <!-- Top Status & Control Bar -->
+                  <div class="absolute top-3 left-3 right-3 flex items-center justify-between z-30 pointer-events-none">
+                    <div class="bg-black/85 backdrop-blur-sm border border-acid text-acid font-mono text-[9px] font-bold px-2 py-0.5 flex items-center gap-1.5 shadow-md">
+                      <span class="w-1.5 h-1.5 bg-hotpink rounded-full animate-ping"></span>
+                      <span id="video-state-badge">3D REBEL // LOOK-AT ACTIVE</span>
+                    </div>
+
+                    <div class="flex items-center gap-1.5 pointer-events-auto">
+                      <!-- Toggle Media Mode (Image vs Video) -->
+                      <button 
+                        id="media-mode-toggle-btn"
+                        type="button" 
+                        class="px-2 py-1 bg-black/85 hover:bg-acid hover:text-black text-white border border-neutral-700 font-mono text-[9px] font-bold uppercase transition-all active:scale-90 shadow-sm flex items-center gap-1"
+                        title="Toggle 3D Image or Looping Video"
+                        aria-label="Toggle Image or Video Mode"
+                      >
+                        <span class="text-hotpink">✦</span>
+                        <span id="media-mode-text">3D IMAGE</span>
+                      </button>
+
+                      <!-- Audio Vibe Ambient Synthesizer Button -->
+                      <button 
+                        id="audio-vibe-btn"
+                        type="button" 
+                        class="p-1 sm:px-2 py-1 bg-black/85 hover:bg-hotpink hover:text-white text-acid border border-neutral-700 font-mono text-[10px] font-bold uppercase transition-all active:scale-90 shadow-sm flex items-center gap-1"
+                        title="Toggle Ambient Streetwear Beat"
+                        aria-label="Toggle Audio Vibe"
+                      >
+                        <span id="audio-vibe-icon">🔇</span>
+                        <span class="hidden sm:inline text-[8px]" id="audio-vibe-text">VIBE</span>
+                      </button>
+                    </div>
                   </div>
+
+                  <!-- Cyber Brand Location Badge in lower left -->
+                  <div class="absolute bottom-3 left-3 bg-acid text-black font-mono text-[10px] font-bold px-2.5 py-1 border border-black shadow-md z-30 pointer-events-none flex items-center gap-1.5">
+                    <span class="text-hotpink font-bold">✦</span>
+                    <span>STREET DRIP // 004-CHANDKHEDA</span>
+                  </div>
+
+                  <!-- Real-Time Cursor Tracking Coordinates & Look-At Azimuth -->
+                  <div id="face-tracking-telemetry" class="absolute bottom-3 right-3 bg-black/85 text-white font-mono text-[9px] font-bold px-2 py-1 border border-neutral-700 shadow-md z-30 pointer-events-none flex items-center gap-1">
+                    <span class="text-acid animate-crosshair">✛</span>
+                    <span id="face-tracking-coords">LOOK-AT // X:0° Y:0°</span>
+                  </div>
+
+                  <!-- Interactive Custom Cursor Reticle Overlay for Local Hover -->
+                  <div id="hero-custom-cursor" class="hero-cursor-reticle hidden md:block">
+                    <!-- Reticle Box with Corner Brackets & Center Star -->
+                    <div class="relative w-12 h-12 flex items-center justify-center">
+                      <div class="reticle-corner reticle-tl"></div>
+                      <div class="reticle-corner reticle-tr"></div>
+                      <div class="reticle-corner reticle-bl"></div>
+                      <div class="reticle-corner reticle-br"></div>
+                      
+                      <!-- Center Spinning Diamond Spark -->
+                      <span class="text-hotpink font-mono text-base leading-none font-bold animate-star-spin select-none">✦</span>
+                    </div>
+
+                    <!-- Cursor Info Badge with Real-Time Coordinates -->
+                    <div class="mt-1 -ml-7 bg-black text-white font-mono text-[9px] font-bold px-2 py-0.5 border border-acid shadow-xl whitespace-nowrap flex items-center gap-1.5 pointer-events-none">
+                      <span class="w-1.5 h-1.5 bg-acid rounded-full animate-pulse"></span>
+                      <span>REBEL // <span id="cur-x" class="text-acid">0</span>,<span id="cur-y" class="text-acid">0</span></span>
+                    </div>
+                  </div>
+
                 </div>
               </div>
             </div>
@@ -1756,11 +1949,330 @@
         }
       }
 
-      // 10. EVENT LISTENERS INITIALIZATION
+      // 10. HERO 3D REBEL AVATAR & INTERACTIVE CURSOR ANIMATION
+      function initHeroVideoAndCursor() {
+        const card = document.getElementById('hero-interactive-card');
+        const container = document.getElementById('hero-media-container');
+        const rebelImg = document.getElementById('hero-rebel-img');
+        const video = document.getElementById('hero-rebel-video');
+        const bgGlow = document.getElementById('avatar-bg-glow');
+        const sheen = document.getElementById('hero-sheen');
+        const localCursor = document.getElementById('hero-custom-cursor');
+        const curX = document.getElementById('cur-x');
+        const curY = document.getElementById('cur-y');
+        const stateBadge = document.getElementById('video-state-badge');
+        const faceCoords = document.getElementById('face-tracking-coords');
+        const mediaToggleBtn = document.getElementById('media-mode-toggle-btn');
+        const mediaModeText = document.getElementById('media-mode-text');
+        const audioBtn = document.getElementById('audio-vibe-btn');
+        const audioIcon = document.getElementById('audio-vibe-icon');
+        const audioText = document.getElementById('audio-vibe-text');
+
+        // Global scroll-reactive cursor elements
+        const siteCursor = document.getElementById('site-scroll-cursor');
+        const scrollRing = document.getElementById('scroll-cursor-ring');
+        const scrollBrackets = document.getElementById('scroll-cursor-brackets');
+        const scrollHudText = document.getElementById('scroll-cursor-hud-text');
+        const scrollDirIcon = document.getElementById('scroll-cursor-dir');
+
+        if (!container || !card) return;
+
+        let targetTiltX = 0;
+        let targetTiltY = 0;
+        let targetTiltZ = 0;
+        let currentTiltX = 0;
+        let currentTiltY = 0;
+        let currentTiltZ = 0;
+        let scrollNodOffset = 0;
+        let isMediaVideo = false;
+
+        // Global scroll tracking state
+        let lastScrollY = window.pageYOffset || document.documentElement.scrollTop;
+        let scrollRingAngle = 0;
+        let scrollTimeout = null;
+
+        // Start video autoplay silently in background
+        if (video) {
+          video.muted = true;
+          video.play().catch(() => {});
+        }
+
+        // Toggle between High-Res 3D Avatar Image and 3D Video Loop
+        if (mediaToggleBtn) {
+          mediaToggleBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            isMediaVideo = !isMediaVideo;
+            if (isMediaVideo) {
+              if (video) {
+                video.classList.remove('opacity-0');
+                video.classList.add('opacity-100');
+                video.play().catch(() => {});
+              }
+              if (rebelImg) {
+                rebelImg.classList.remove('opacity-100');
+                rebelImg.classList.add('opacity-0');
+              }
+              if (mediaModeText) mediaModeText.textContent = '3D VIDEO';
+              if (stateBadge) stateBadge.textContent = '3D REBEL // VIDEO LOOP';
+              showToast('SWITCHED TO 3D VIDEO LOOP');
+            } else {
+              if (video) {
+                video.classList.remove('opacity-100');
+                video.classList.add('opacity-0');
+                video.pause();
+              }
+              if (rebelImg) {
+                rebelImg.classList.remove('opacity-0');
+                rebelImg.classList.add('opacity-100');
+              }
+              if (mediaModeText) mediaModeText.textContent = '3D IMAGE';
+              if (stateBadge) stateBadge.textContent = '3D REBEL // LOOK-AT ACTIVE';
+              showToast('SWITCHED TO 3D AVATAR PORTRAIT');
+            }
+          });
+        }
+
+        // 1. GLOBAL MOUSE MOVE: Face moves along as cursor moves while seeing website
+        function handleGlobalMouseMove(e) {
+          // Update global scroll-reactive cyber cursor position
+          if (siteCursor) {
+            siteCursor.style.left = `${e.clientX}px`;
+            siteCursor.style.top = `${e.clientY}px`;
+            siteCursor.style.opacity = '1';
+          }
+
+          // Calculate center of avatar container in viewport
+          const rect = container.getBoundingClientRect();
+          const centerX = rect.left + rect.width / 2;
+          const centerY = rect.top + rect.height / 2;
+
+          // Normalized offset from head center (-1 to +1 across window)
+          const halfWidth = Math.max(window.innerWidth / 2, 300);
+          const halfHeight = Math.max(window.innerHeight / 2, 300);
+          const normX = Math.max(-1.2, Math.min(1.2, (e.clientX - centerX) / halfWidth));
+          const normY = Math.max(-1.2, Math.min(1.2, (e.clientY - centerY) / halfHeight));
+
+          // Set 3D target tilt (Yaw, Pitch, Roll)
+          targetTiltY = normX * 24; // Head turns horizontally
+          targetTiltX = -normY * 20; // Head tilts vertically
+          targetTiltZ = -normX * 3.5; // Natural neck roll angle
+
+          // Check if hovering directly inside container for local targeting reticle
+          const isInside = (
+            e.clientX >= rect.left &&
+            e.clientX <= rect.right &&
+            e.clientY >= rect.top &&
+            e.clientY <= rect.bottom
+          );
+
+          if (localCursor) {
+            if (isInside) {
+              localCursor.classList.add('active');
+              const localX = e.clientX - rect.left;
+              const localY = e.clientY - rect.top;
+              localCursor.style.left = `${localX}px`;
+              localCursor.style.top = `${localY}px`;
+              if (curX) curX.textContent = Math.round(localX);
+              if (curY) curY.textContent = Math.round(localY);
+            } else {
+              localCursor.classList.remove('active');
+            }
+          }
+
+          // Update specular gloss sheen gliding over the sunglasses
+          if (sheen) {
+            const sheenX = Math.round(50 + targetTiltY * 1.5);
+            const sheenY = Math.round(50 - targetTiltX * 1.5);
+            sheen.style.background = `radial-gradient(circle at ${sheenX}% ${sheenY}%, rgba(255,255,255,0.48) 0%, rgba(180,87,232,0.3) 30%, transparent 68%)`;
+          }
+
+          // Update real-time look-at telemetry tag
+          if (faceCoords) {
+            faceCoords.textContent = `LOOK-AT // X:${Math.round(targetTiltY)}° Y:${Math.round(-targetTiltX)}°`;
+          }
+        }
+
+        window.addEventListener('mousemove', handleGlobalMouseMove, { passive: true });
+
+        // 2. GLOBAL SCROLL: Cursor animation triggers when website is scrolled + face nods
+        function handleGlobalScroll() {
+          const currentScrollY = window.pageYOffset || document.documentElement.scrollTop;
+          const scrollDelta = currentScrollY - lastScrollY;
+          const scrollSpeed = Math.abs(scrollDelta);
+          lastScrollY = currentScrollY;
+
+          if (scrollSpeed > 1) {
+            // Activate scrolling styling on document body
+            document.body.classList.add('scroll-cursor-scrolling');
+
+            // Rotate cursor ring based on scroll delta
+            scrollRingAngle += scrollDelta * 1.5;
+            if (scrollRing) {
+              scrollRing.style.transform = `rotate(${scrollRingAngle}deg) scale(${1 + Math.min(scrollSpeed * 0.015, 0.45)})`;
+            }
+
+            // Expand crosshair brackets
+            if (scrollBrackets) {
+              scrollBrackets.style.transform = `scale(${1 + Math.min(scrollSpeed * 0.02, 0.5)})`;
+            }
+
+            // Update telemetry HUD with speed and direction
+            if (scrollHudText) {
+              const velocityLabel = scrollSpeed > 25 ? 'TURBO' : 'FLOW';
+              scrollHudText.textContent = `${velocityLabel} // ${Math.round(scrollSpeed * 8)} PX/S`;
+            }
+            if (scrollDirIcon) {
+              scrollDirIcon.textContent = scrollDelta > 0 ? '▼' : '▲';
+            }
+
+            // Face dynamically nods with scroll inertia
+            const nodDelta = Math.max(-12, Math.min(12, scrollDelta * 0.22));
+            scrollNodOffset = Math.max(-18, Math.min(18, scrollNodOffset + nodDelta));
+
+            // Reset scrolling class after scroll motion ceases
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+              document.body.classList.remove('scroll-cursor-scrolling');
+              if (scrollBrackets) scrollBrackets.style.transform = 'scale(1)';
+              if (scrollRing) scrollRing.style.transform = `rotate(${scrollRingAngle}deg) scale(1)`;
+            }, 180);
+          }
+        }
+
+        window.addEventListener('scroll', handleGlobalScroll, { passive: true });
+
+        // Touch drag support for mobile
+        window.addEventListener('touchmove', (e) => {
+          if (e.touches && e.touches[0]) {
+            const touch = e.touches[0];
+            handleGlobalMouseMove({ clientX: touch.clientX, clientY: touch.clientY });
+            handleGlobalScroll();
+          }
+        }, { passive: true });
+
+        // 3. SMOOTH 60FPS RAF ANIMATION LOOP: Silky head rotation and depth parallax
+        function animateHeadLoop() {
+          // Lerp interpolation for fluid movement
+          currentTiltX += (targetTiltX + scrollNodOffset - currentTiltX) * 0.12;
+          currentTiltY += (targetTiltY - currentTiltY) * 0.12;
+          currentTiltZ += (targetTiltZ - currentTiltZ) * 0.12;
+
+          // Damping for scroll nod offset (spring back)
+          scrollNodOffset *= 0.88;
+
+          // Apply 3D perspective rotation to artboard card
+          card.style.transform = `perspective(1000px) rotateX(${currentTiltX.toFixed(2)}deg) rotateY(${currentTiltY.toFixed(2)}deg) rotateZ(${currentTiltZ.toFixed(2)}deg)`;
+
+          // Apply 2.5D depth parallax to the avatar face image
+          if (rebelImg) {
+            rebelImg.style.transform = `scale(1.04) translate3d(${(-currentTiltY * 0.65).toFixed(1)}px, ${(-currentTiltX * 0.65).toFixed(1)}px, 15px)`;
+          }
+
+          // Counter-parallax on ambient purple lighting backdrop
+          if (bgGlow) {
+            bgGlow.style.transform = `translate3d(${(currentTiltY * 1.1).toFixed(1)}px, ${(currentTiltX * 1.1).toFixed(1)}px, -10px)`;
+          }
+
+          requestAnimationFrame(animateHeadLoop);
+        }
+
+        requestAnimationFrame(animateHeadLoop);
+
+        // Click feedback on avatar container
+        container.addEventListener('click', (e) => {
+          if (e.target.closest('button')) return;
+          if (localCursor) {
+            localCursor.style.transform = 'translate(-50%, -50%) scale(0.85)';
+            setTimeout(() => {
+              if (localCursor) localCursor.style.transform = 'translate(-50%, -50%) scale(1)';
+            }, 180);
+          }
+          showToast('STREET DRIP // REBEL 3D AVATAR ACTIVE');
+        });
+
+        // Ambient Web Audio Synthesizer Vibe
+        let audioCtx = null;
+        let isAudioPlaying = false;
+        let osc1 = null;
+        let osc2 = null;
+        let filter = null;
+        let gainNode = null;
+        let beatInterval = null;
+
+        function toggleAudioVibe(e) {
+          e.stopPropagation();
+          if (!isAudioPlaying) {
+            try {
+              const AudioContext = window.AudioContext || window.webkitAudioContext;
+              if (!AudioContext) return;
+              if (!audioCtx) audioCtx = new AudioContext();
+              if (audioCtx.state === 'suspended') audioCtx.resume();
+
+              gainNode = audioCtx.createGain();
+              gainNode.gain.setValueAtTime(0.08, audioCtx.currentTime);
+
+              filter = audioCtx.createBiquadFilter();
+              filter.type = 'lowpass';
+              filter.frequency.setValueAtTime(260, audioCtx.currentTime);
+
+              osc1 = audioCtx.createOscillator();
+              osc1.type = 'sine';
+              osc1.frequency.setValueAtTime(55, audioCtx.currentTime);
+
+              osc2 = audioCtx.createOscillator();
+              osc2.type = 'sawtooth';
+              osc2.frequency.setValueAtTime(110, audioCtx.currentTime);
+
+              const osc2Gain = audioCtx.createGain();
+              osc2Gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+              osc2.connect(osc2Gain);
+              osc2Gain.connect(filter);
+
+              osc1.connect(filter);
+              filter.connect(gainNode);
+              gainNode.connect(audioCtx.destination);
+
+              osc1.start();
+              osc2.start();
+
+              let sweepUp = true;
+              beatInterval = setInterval(() => {
+                if (filter && audioCtx && audioCtx.state === 'running') {
+                  const targetFreq = sweepUp ? 450 : 180;
+                  filter.frequency.exponentialRampToValueAtTime(targetFreq, audioCtx.currentTime + 0.35);
+                  sweepUp = !sweepUp;
+                }
+              }, 600);
+
+              isAudioPlaying = true;
+              if (audioIcon) audioIcon.textContent = '🔊';
+              if (audioText) audioText.textContent = 'MUTE';
+              showToast('🔊 AMBIENT STREET DRIP VIBE ACTIVATED');
+            } catch (err) {
+              console.warn('Audio context unavailable', err);
+            }
+          } else {
+            if (osc1) { try { osc1.stop(); osc1.disconnect(); } catch(e){} }
+            if (osc2) { try { osc2.stop(); osc2.disconnect(); } catch(e){} }
+            if (beatInterval) clearInterval(beatInterval);
+            isAudioPlaying = false;
+            if (audioIcon) audioIcon.textContent = '🔇';
+            if (audioText) audioText.textContent = 'VIBE';
+            showToast('AMBIENT AUDIO MUTED');
+          }
+        }
+
+        if (audioBtn) {
+          audioBtn.addEventListener('click', toggleAudioVibe);
+        }
+      }
+
+      // 11. EVENT LISTENERS INITIALIZATION
       document.addEventListener('DOMContentLoaded', () => {
         renderNewItems();
         updateCartUI();
         updateStoreStatus();
+        initHeroVideoAndCursor();
         setInterval(updateStoreStatus, 60000);
 
         // Cart Toggles
@@ -1778,7 +2290,7 @@
         document.getElementById('checkout-btn')?.addEventListener('click', () => {
           showToast('PROCEEDING TO PAYMENT / STORE PICKUP TERMINAL...');
           setTimeout(() => {
-            alert('ORDER PLACED: Thank you for shopping with STREET DRIP AHMEDABAD! We have received your order. We will reach out via WhatsApp/Phone for confirmation.');
+            showToast('✓ ORDER CONFIRMED! Thank you for shopping with STREET DRIP AHMEDABAD!');
             state.cart = [];
             saveCart();
             updateCartUI();
