@@ -1,0 +1,1799 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>STREET DRIP // Ahmedabad Streetwear & Culture</title>
+    <meta name="description" content="Street Drip Ahmedabad — Gujarat's premier street-fashion & youth-culture destination in Chandkheda. Gathiya Rath Road, opposite Casa The Status. Phone: +91 99244 69685 | @streetdripahmedabad | 5.0★ Google Rating." />
+    <meta property="og:title" content="STREET DRIP // Ahmedabad Streetwear & Culture" />
+    <meta property="og:description" content="Clothes for those who create their own rules. Chandkheda, Ahmedabad. 5.0★ Google rating, verified drops, WhatsApp ordering." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Google Fonts: Inter & Space Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              acid: '#e2ff00',      // Electric acid yellow from brand aesthetic
+              acidHover: '#ccff00',
+              hotpink: '#ff007f',   // Neon magenta / pink accent
+              hotpinkHover: '#e60073',
+              darkbg: '#0c0c0d',    // Dark graffiti textured backdrop
+              surface: '#151516',
+              artboard: '#ffffff',  // Clean stark white artboard
+              artboardDark: '#121212',
+              linegray: '#e5e5e5',
+              borderdark: '#222224'
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              mono: ['"Space Mono"', 'monospace']
+            }
+          }
+        }
+      }
+    </script>
+
+    <!-- Embedded Custom Styles: Graffiti background, Selection Bounding Boxes, Drip Badges, and Marquee -->
+    <style>
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 7px;
+        height: 7px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #0c0c0d;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #ff007f;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #e2ff00;
+      }
+
+      /* Dark Wall Graffiti Background Pattern */
+      .street-wall-bg {
+        background-color: #0c0c0d;
+        background-image: 
+          radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+          url("data:image/svg+xml,%3Csvg width='400' height='400' viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23333333' stroke-width='1.2' opacity='0.25'%3E%3Cpath d='M20 50 Q60 20 100 70 T180 50'/%3E%3Cpath d='M300 80 L340 140 L280 160 Z'/%3E%3Ctext x='40' y='220' font-family='sans-serif' font-weight='900' font-size='24' fill='%23282828'%3E%23AHMEDABAD%3C/text%3E%3Ctext x='230' y='320' font-family='sans-serif' font-weight='900' font-size='28' fill='%23222222'%3ESTREET DRIP%3C/text%3E%3Ccircle cx='70' cy='330' r='25' stroke='%23333333' stroke-dasharray='4,4'/%3E%3Cpath d='M150 120 C 130 180, 190 240, 220 170'/%3E%3C/g%3E%3C/svg%3E");
+      }
+
+      /* Infinite Marquee */
+      @keyframes marqueeAnim {
+        0% { transform: translateX(0%); }
+        100% { transform: translateX(-50%); }
+      }
+      .animate-marquee-strip {
+        display: flex;
+        width: max-content;
+        animation: marqueeAnim 26s linear infinite;
+      }
+      .animate-marquee-strip:hover {
+        animation-play-state: paused;
+      }
+
+      /* Designer Artboard Selection Bounding Box with Corner & Edge Drag Handles */
+      .artboard-bbox {
+        position: relative;
+        outline: 1.5px dashed #2b2b2b;
+        outline-offset: 4px;
+      }
+      .artboard-bbox-active {
+        outline: 1.5px solid #0066ff;
+      }
+      .bbox-handle {
+        position: absolute;
+        width: 7px;
+        height: 7px;
+        background: #ffffff;
+        border: 1.5px solid #0066ff;
+        pointer-events: none;
+        z-index: 20;
+      }
+      .bbox-tl { top: -6px; left: -6px; }
+      .bbox-tr { top: -6px; right: -6px; }
+      .bbox-bl { bottom: -6px; left: -6px; }
+      .bbox-br { bottom: -6px; right: -6px; }
+      .bbox-tc { top: -6px; left: 50%; transform: translateX(-50%); }
+      .bbox-bc { bottom: -6px; left: 50%; transform: translateX(-50%); }
+      .bbox-ml { top: 50%; left: -6px; transform: translateY(-50%); }
+      .bbox-mr { top: 50%; right: -6px; transform: translateY(-50%); }
+
+      /* Product Border Category Tab Label */
+      .card-tab-label {
+        position: absolute;
+        top: -9px;
+        left: 12px;
+        background: #e2ff00;
+        color: #000000;
+        font-family: 'Space Mono', monospace;
+        font-size: 9px;
+        font-weight: 700;
+        padding: 1px 6px;
+        border: 1px solid #000000;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        z-index: 10;
+      }
+
+      /* Pixelated Grid Effect for Hero */
+      .pixel-grid {
+        background-image: linear-gradient(to right, rgba(0,0,0,0.15) 1px, transparent 1px),
+                          linear-gradient(to bottom, rgba(0,0,0,0.15) 1px, transparent 1px);
+        background-size: 16px 16px;
+      }
+
+      /* Drip spray animation */
+      @keyframes pulseSlow {
+        0%, 100% { transform: scale(1) rotate(0deg); }
+        50% { transform: scale(1.04) rotate(-2deg); }
+      }
+      .animate-drip-bounce {
+        animation: pulseSlow 4s ease-in-out infinite;
+      }
+
+      /* Pill Shape Clip */
+      .capsule-clip {
+        border-radius: 9999px;
+      }
+    </style>
+  </head>
+  <body class="street-wall-bg text-black font-sans antialiased selection:bg-hotpink selection:text-white min-h-screen flex flex-col relative overflow-x-hidden">
+
+    <!-- 1. TOP UTILITY MARQUEE TICKER (High-Voltage Acid Yellow & Hot Pink with Street Drip Store Info) -->
+    <aside id="top-marquee" aria-label="Drop Announcement Ticker" class="bg-acid text-black font-mono text-[11px] font-bold tracking-wider uppercase py-1.5 border-b-2 border-black overflow-hidden sticky top-0 z-50 shadow-sm select-none">
+      <div class="animate-marquee-strip flex items-center gap-8">
+        <span class="inline-flex items-center gap-2"><span class="w-2 h-2 bg-hotpink inline-block"></span> STREET DRIP // AHMEDABAD'S STREETWEAR HUB</span>
+        <span>+++</span>
+        <span class="inline-flex items-center gap-2 text-hotpink">★ 5.0 GOOGLE RATING (11 REVIEWS)</span>
+        <span>+++</span>
+        <span>CHANDKHEDA STORE: GATHIYA RATH RD, OPP CASA THE STATUS</span>
+        <span>+++</span>
+        <span>OPEN MON–SAT 10:00 AM – 8:00 PM</span>
+        <span>+++</span>
+        <span class="inline-flex items-center gap-2"><span>📲</span> WHATSAPP FOR SIZES: +91 99244 69685</span>
+        <span>+++</span>
+        <span>INSTAGRAM: @STREETDRIPAHMEDABAD</span>
+        <span>+++</span>
+        <span>FREE SHIPPING IN INDIA ON ORDERS OVER ₹1,999</span>
+        <span>+++</span>
+        <!-- Duplication for infinite loop -->
+        <span class="inline-flex items-center gap-2"><span class="w-2 h-2 bg-hotpink inline-block"></span> STREET DRIP // AHMEDABAD'S STREETWEAR HUB</span>
+        <span>+++</span>
+        <span class="inline-flex items-center gap-2 text-hotpink">★ 5.0 GOOGLE RATING (11 REVIEWS)</span>
+        <span>+++</span>
+        <span>CHANDKHEDA STORE: GATHIYA RATH RD, OPP CASA THE STATUS</span>
+        <span>+++</span>
+        <span>OPEN MON–SAT 10:00 AM – 8:00 PM</span>
+        <span>+++</span>
+        <span class="inline-flex items-center gap-2"><span>📲</span> WHATSAPP FOR SIZES: +91 99244 69685</span>
+        <span>+++</span>
+        <span>INSTAGRAM: @STREETDRIPAHMEDABAD</span>
+        <span>+++</span>
+        <span>FREE SHIPPING IN INDIA ON ORDERS OVER ₹1,999</span>
+        <span>+++</span>
+      </div>
+    </aside>
+
+    <!-- 2. GLOBAL NAVIGATION -->
+    <header id="global-header" class="sticky top-[31px] z-40 bg-white/95 backdrop-blur-md border-b border-black">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
+        
+        <!-- Brand Logo: Street Drip Ahmedabad -->
+        <div class="flex items-center gap-4">
+          <a href="#" id="brand-logo" class="flex items-center gap-2.5 text-black group">
+            <div class="bg-black text-acid px-2.5 py-1 font-mono font-black text-sm tracking-tighter group-hover:bg-hotpink group-hover:text-white transition-colors border border-black">
+              SD
+            </div>
+            <div class="flex flex-col">
+              <span class="font-black text-xl sm:text-2xl tracking-tighter uppercase font-sans leading-none flex items-center gap-1">
+                STREET DRIP
+                <span class="text-hotpink text-sm">★</span>
+              </span>
+              <span class="font-mono text-[9px] text-neutral-600 uppercase tracking-widest font-bold">
+                AHMEDABAD // CHANDKHEDA
+              </span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Navigation Links matching store sections -->
+        <nav id="desktop-nav" class="hidden md:flex items-center gap-6 font-sans font-bold text-xs uppercase tracking-wider text-neutral-800">
+          <a href="#hero-section" class="hover:text-hotpink transition-colors">Drops</a>
+          <a href="#bestsellers-section" class="hover:text-hotpink transition-colors">Bestsellers</a>
+          <a href="#store-profile-section" class="hover:text-hotpink transition-colors flex items-center gap-1">
+            <span>Store & Hours</span>
+            <span class="bg-acid text-[9px] px-1 font-mono font-bold text-black border border-black">5.0★</span>
+          </a>
+          <a href="#about-section" class="hover:text-hotpink transition-colors">Brand Identity</a>
+          <a href="#new-items-section" class="hover:text-hotpink transition-colors">New Items</a>
+          <a href="#outfits-section" class="hover:text-hotpink transition-colors">Looks</a>
+        </nav>
+
+        <!-- Right Tools: Live Store Status Badge, WhatsApp CTA, & Cart Trigger -->
+        <div class="flex items-center gap-2.5 sm:gap-3 font-mono text-xs">
+          <!-- Live Store Open/Closed indicator (Indian Standard Time) -->
+          <div id="store-status-badge" class="hidden lg:inline-flex items-center gap-1.5 px-2.5 py-1 bg-neutral-100 border border-black text-[10px] font-bold">
+            <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
+            <span id="store-status-text">CHANDKHEDA: OPEN TODAY 10AM-8PM</span>
+          </div>
+
+          <!-- WhatsApp Direct Action Button -->
+          <a 
+            href="https://wa.me/919924469685?text=Hi%20Street%20Drip%20Ahmedabad!%20I'm%20inquiring%20about%20your%20streetwear%20collection%20and%20sizes." 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold font-mono text-[11px] uppercase border border-black shadow-sm transition-colors active:scale-95"
+            title="Chat with Street Drip on WhatsApp (+91 99244 69685)"
+          >
+            <span>💬</span>
+            <span class="hidden xl:inline">WHATSAPP</span>
+          </a>
+
+          <!-- Cart Trigger Button -->
+          <button 
+            id="cart-trigger-btn" 
+            type="button" 
+            aria-label="Open Cart"
+            class="relative flex items-center gap-2 px-3 sm:px-3.5 py-2 bg-black hover:bg-neutral-800 text-white font-bold font-mono text-xs uppercase transition-transform active:scale-95 border border-black shadow-sm"
+          >
+            <span>BAG</span>
+            <span id="cart-badge-count" class="bg-acid text-black px-1.5 py-0.5 font-bold text-[11px] leading-none">0</span>
+          </button>
+
+          <!-- Mobile Menu Trigger -->
+          <button 
+            id="mobile-menu-btn" 
+            type="button" 
+            aria-label="Toggle Navigation"
+            class="md:hidden p-2 border border-black text-black hover:bg-acid transition-colors"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Dropdown Navigation -->
+      <div id="mobile-nav-panel" class="hidden md:hidden border-t border-black bg-white px-6 py-4 font-mono text-xs uppercase tracking-widest flex flex-col gap-3 font-bold">
+        <a href="#hero-section" class="py-1.5 hover:text-hotpink border-b border-neutral-100">Drops</a>
+        <a href="#bestsellers-section" class="py-1.5 hover:text-hotpink border-b border-neutral-100">Bestsellers</a>
+        <a href="#store-profile-section" class="py-1.5 hover:text-hotpink border-b border-neutral-100">Chandkheda Store Info & Map</a>
+        <a href="#about-section" class="py-1.5 hover:text-hotpink border-b border-neutral-100">Brand Identity</a>
+        <a href="#new-items-section" class="py-1.5 hover:text-hotpink border-b border-neutral-100">New Items Catalog</a>
+        <a href="#outfits-section" class="py-1.5 hover:text-hotpink border-b border-neutral-100">Ready-Made Looks</a>
+        <a 
+          href="https://wa.me/919924469685?text=Hi%20Street%20Drip%20Ahmedabad!%20I'm%20inquiring%20about%20your%20streetwear%20collection." 
+          target="_blank" 
+          class="py-2 px-3 bg-emerald-600 text-white text-center font-bold"
+        >
+          WHATSAPP ENQUIRY (+91 99244 69685)
+        </a>
+      </div>
+    </header>
+
+    <!-- MAIN EDITORIAL CONTAINER: White Artboard Central Magazine Canvas -->
+    <main class="flex-grow max-w-5xl mx-auto w-full px-2 sm:px-4 py-4 sm:py-8">
+      <div class="bg-artboard border-2 border-black shadow-2xl relative overflow-hidden">
+        
+        <!-- ========================================================================= -->
+        <!-- 3. HERO SHOWCASE SECTION (Street Drip Ahmedabad Focus) -->
+        <!-- ========================================================================= -->
+        <section id="hero-section" class="relative border-b-2 border-black bg-acid p-4 sm:p-8 overflow-hidden">
+          
+          <!-- Pixelated background grid overlay -->
+          <div class="absolute inset-0 pixel-grid opacity-30 pointer-events-none"></div>
+
+          <!-- Digital architectural pixel blocks on top right -->
+          <div class="absolute -top-6 -right-6 w-56 h-56 bg-black opacity-15 hidden md:block" style="clip-path: polygon(0 0, 100% 0, 100% 60%, 70% 60%, 70% 100%, 0 100%);"></div>
+
+          <!-- Content Grid inside Hero -->
+          <div class="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+            
+            <!-- Left Editorial Text -->
+            <div class="md:col-span-7 space-y-4">
+              <!-- Location Capsule Badge -->
+              <div class="inline-flex flex-wrap items-center gap-2 bg-black text-white px-2.5 py-1 font-mono text-xs uppercase font-bold tracking-wider">
+                <span class="w-2 h-2 bg-hotpink"></span>
+                <span>AHMEDABAD // CHANDKHEDA</span>
+                <span class="text-acid font-mono text-[11px]">★ 5.0 GOOGLE RATED</span>
+              </div>
+
+              <!-- Main Hero Title with Bounding Box and Drag Handles -->
+              <div class="artboard-bbox p-2 bg-acid inline-block">
+                <div class="bbox-handle bbox-tl"></div>
+                <div class="bbox-handle bbox-tr"></div>
+                <div class="bbox-handle bbox-bl"></div>
+                <div class="bbox-handle bbox-br"></div>
+                <h1 class="font-black text-4xl sm:text-6xl lg:text-7xl font-sans uppercase tracking-tighter text-black leading-[0.9]">
+                  CLOTHES FOR THOSE WHO CREATE THEIR OWN RULES
+                </h1>
+              </div>
+
+              <!-- Brand Manifesto Narrative customized from PDF -->
+              <div class="flex items-start gap-3 pt-2">
+                <span class="text-hotpink font-mono text-lg font-black leading-none">♡x♡x</span>
+                <p class="font-mono text-xs sm:text-sm text-neutral-800 font-bold max-w-md leading-relaxed uppercase">
+                  STREET DRIP: Ahmedabad's unapologetic street-fashion destination. Bold silhouettes, oversized drops, and urban energy crafted for young rebels and trendsetters.
+                </p>
+              </div>
+
+              <!-- Verified Store Location Quick Mention -->
+              <div class="bg-white/90 border border-black p-2.5 font-mono text-xs flex items-center justify-between gap-2 max-w-md">
+                <div class="flex items-center gap-2">
+                  <span class="text-base">📍</span>
+                  <span class="font-bold uppercase text-[11px]">Gathiya Rath Rd, Opp Casa The Status, Chandkheda</span>
+                </div>
+                <span class="bg-black text-white text-[10px] px-1.5 py-0.5 font-bold shrink-0">10AM–8PM</span>
+              </div>
+
+              <!-- Action CTAs -->
+              <div class="pt-2 flex flex-wrap items-center gap-3 font-mono text-xs font-bold uppercase">
+                <a 
+                  href="#store-profile-section" 
+                  class="px-5 py-3 bg-black hover:bg-neutral-800 text-white transition-all shadow-md active:scale-95 flex items-center gap-2"
+                >
+                  <span>VISIT STORE & MAP</span>
+                  <span>📍</span>
+                </a>
+                <a 
+                  href="https://wa.me/919924469685?text=Hi%20Street%20Drip!%20I'd%20like%20to%20check%20availability%20and%20sizes%20for%20your%20latest%20drop." 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  class="px-5 py-3 bg-emerald-600 hover:bg-emerald-700 text-white transition-all shadow-md active:scale-95 flex items-center gap-2"
+                >
+                  <span>WHATSAPP FOR SIZES</span>
+                  <span>📲</span>
+                </a>
+                <a 
+                  href="#new-items-section" 
+                  class="px-5 py-3 bg-hotpink hover:bg-hotpinkHover text-white transition-all shadow-md active:scale-95 flex items-center gap-2"
+                >
+                  <span>EXPLORE DROPS</span>
+                  <span>→</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Right Hero Imagery: Streetwear model in bounding box selection -->
+            <div class="md:col-span-5 relative flex justify-center">
+              <div class="artboard-bbox p-1 bg-white border border-black max-w-xs sm:max-w-sm w-full">
+                <!-- Handles -->
+                <div class="bbox-handle bbox-tl"></div>
+                <div class="bbox-handle bbox-tr"></div>
+                <div class="bbox-handle bbox-bl"></div>
+                <div class="bbox-handle bbox-br"></div>
+                <div class="bbox-handle bbox-tc"></div>
+                <div class="bbox-handle bbox-bc"></div>
+
+                <div class="relative overflow-hidden aspect-[3/4] bg-neutral-900 group">
+                  <img 
+                    src="https://images.unsplash.com/photo-1509967419530-da38b4704bc6?q=80&w=900&auto=format&fit=crop" 
+                    alt="Street Drip Ahmedabad Model" 
+                    class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <!-- Cyber digital distortion / yellow accent box like in image -->
+                  <div class="absolute bottom-3 left-3 bg-acid text-black font-mono text-[10px] font-bold px-2 py-1 border border-black shadow-sm">
+                    STREET DRIP // 004-CHANDKHEDA
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- 4. VERIFIED RETAIL & STORE PROFILE (From the Provided Document) -->
+        <!-- ========================================================================= -->
+        <section id="store-profile-section" class="p-6 sm:p-8 bg-neutral-900 text-white border-b-2 border-black relative overflow-hidden">
+          <!-- Background street tag watermark -->
+          <div class="absolute -right-8 -bottom-10 opacity-10 font-sans font-black text-8xl pointer-events-none select-none">
+            DRIP
+          </div>
+
+          <div class="max-w-4xl mx-auto space-y-6 relative z-10">
+            
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-neutral-700 pb-4">
+              <div>
+                <span class="font-mono text-xs text-acid font-bold uppercase tracking-widest">[VERIFIED STORE PROFILE]</span>
+                <h2 class="text-2xl sm:text-4xl font-black font-sans uppercase tracking-tight text-white mt-0.5">
+                  STREET DRIP // AHMEDABAD RETAIL HUB
+                </h2>
+                <p class="font-mono text-xs text-neutral-400 uppercase mt-1">
+                  Chandkheda, Ahmedabad, Gujarat • Gathiya Rath Road (Opp. Casa The Status)
+                </p>
+              </div>
+
+              <!-- Ratings Highlight Box -->
+              <div class="flex items-center gap-3 bg-black/60 border border-acid p-3 font-mono text-xs">
+                <div class="text-center pr-3 border-r border-neutral-700">
+                  <div class="text-xl font-black text-acid">5.0 ★</div>
+                  <div class="text-[10px] text-neutral-400 uppercase">Google (11 Reviews)</div>
+                </div>
+                <div class="text-center">
+                  <div class="text-xl font-black text-hotpink">4.9 ★</div>
+                  <div class="text-[10px] text-neutral-400 uppercase">Magicpin (8 Ratings)</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 4 Column Verified Details Grid from the PDF Table -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 font-mono text-xs">
+              
+              <!-- Card 1: Location & Plus Code -->
+              <div class="bg-black/80 border border-neutral-700 p-4 space-y-2">
+                <div class="text-acid font-bold flex items-center gap-1.5">
+                  <span>📍</span>
+                  <span class="uppercase">STORE LOCATION</span>
+                </div>
+                <p class="text-neutral-300 text-[11px] leading-relaxed">
+                  Gathiya Rath Road, opposite Casa The Status, Chandkheda, Ahmedabad, Gujarat 382424
+                </p>
+                <div class="pt-1">
+                  <span class="bg-neutral-800 text-acid px-1.5 py-0.5 text-[10px] font-bold border border-neutral-600 inline-block">
+                    PLUS CODE: 4HFH+89Q
+                  </span>
+                </div>
+              </div>
+
+              <!-- Card 2: Operating Hours -->
+              <div class="bg-black/80 border border-neutral-700 p-4 space-y-2">
+                <div class="text-acid font-bold flex items-center gap-1.5">
+                  <span>⏰</span>
+                  <span class="uppercase">LISTED HOURS</span>
+                </div>
+                <p class="text-neutral-200 text-sm font-black">
+                  10:00 AM – 8:00 PM
+                </p>
+                <p class="text-neutral-400 text-[11px]">
+                  Monday to Saturday
+                </p>
+                <div class="text-[10px] text-hotpink font-bold">
+                  ● CLOSED ON SUNDAYS
+                </div>
+              </div>
+
+              <!-- Card 3: Direct Phone & WhatsApp -->
+              <div class="bg-black/80 border border-neutral-700 p-4 space-y-2">
+                <div class="text-acid font-bold flex items-center gap-1.5">
+                  <span>📞</span>
+                  <span class="uppercase">PHONE & WHATSAPP</span>
+                </div>
+                <a href="tel:+919924469685" class="text-white hover:text-acid font-bold text-sm block">
+                  +91 99244 69685
+                </a>
+                <p class="text-neutral-400 text-[11px]">
+                  Instant size checks, fabric details & walk-in enquiries.
+                </p>
+              </div>
+
+              <!-- Card 4: Instagram & Category -->
+              <div class="bg-black/80 border border-neutral-700 p-4 space-y-2">
+                <div class="text-hotpink font-bold flex items-center gap-1.5">
+                  <span>📸</span>
+                  <span class="uppercase">INSTAGRAM ARCHIVE</span>
+                </div>
+                <a 
+                  href="https://instagram.com/streetdripahmedabad" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  class="text-white hover:text-hotpink font-bold text-sm block"
+                >
+                  @streetdripahmedabad
+                </a>
+                <p class="text-neutral-400 text-[11px]">
+                  Category: Fashion accessories & streetwear retail.
+                </p>
+              </div>
+
+            </div>
+
+            <!-- Quick Action Bar -->
+            <div class="flex flex-wrap items-center justify-between gap-3 pt-2 font-mono text-xs">
+              <div class="flex flex-wrap items-center gap-2">
+                <!-- Google Maps Direction link with the exact plus code 4HFH+89Q from PDF -->
+                <a 
+                  href="https://www.google.com/maps/search/?api=1&query=4HFH%2B89Q+Chandkheda+Ahmedabad" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  class="px-4 py-2.5 bg-acid hover:bg-acidHover text-black font-bold uppercase transition-colors flex items-center gap-1.5"
+                >
+                  <span>GET GOOGLE MAPS DIRECTIONS</span>
+                  <span>↗</span>
+                </a>
+
+                <!-- WhatsApp Direct Chat -->
+                <a 
+                  href="https://wa.me/919924469685?text=Hi%20Street%20Drip%20Ahmedabad!%20I'm%20planning%20to%20visit%20your%20Chandkheda%20store." 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  class="px-4 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold uppercase transition-colors flex items-center gap-1.5"
+                >
+                  <span>WHATSAPP STORE ENQUIRY</span>
+                  <span>💬</span>
+                </a>
+
+                <!-- Instagram DM -->
+                <a 
+                  href="https://instagram.com/streetdripahmedabad" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  class="px-4 py-2.5 bg-neutral-800 hover:bg-neutral-700 text-white font-bold uppercase transition-colors border border-neutral-600 flex items-center gap-1.5"
+                >
+                  <span>DM ON INSTAGRAM</span>
+                  <span>★</span>
+                </a>
+              </div>
+
+              <!-- Trust snippet from PDF -->
+              <span class="text-neutral-400 text-[11px] font-mono">
+                Verified Google Business & Magicpin Listing (Sept 2026)
+              </span>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- 5. BESTSELLERS SECTION (Direct translation with Indian Rupee Pricing) -->
+        <!-- ========================================================================= -->
+        <section id="bestsellers-section" class="p-6 sm:p-10 border-b-2 border-black bg-white relative">
+          
+          <!-- Section Title & Subtitle from image: [popular products] + BESTSELLERS -->
+          <div class="text-center mb-8 relative">
+            <span class="font-mono text-xs text-neutral-500 font-bold uppercase tracking-widest">[popular products // ahmedabad drops]</span>
+            <h2 class="text-3xl sm:text-5xl font-black font-sans uppercase tracking-tight text-black mt-1">
+              BESTSELLERS
+            </h2>
+            
+            <!-- Graffiti Drip Smiley Badge on right (from reference image!) -->
+            <div class="absolute -top-3 right-0 sm:right-4 hidden sm:block animate-drip-bounce select-none pointer-events-none">
+              <div class="relative w-16 h-16 sm:w-20 sm:h-20">
+                <!-- Yellow spray smiley face with "X X" eyes & drip tongue -->
+                <svg viewBox="0 0 100 100" class="w-full h-full drop-shadow-md">
+                  <!-- Drip puddle & circle -->
+                  <circle cx="50" cy="46" r="38" fill="#e2ff00" stroke="#000000" stroke-width="3" />
+                  <!-- Drips -->
+                  <path d="M78 55 Q85 75 75 88 Q70 95 65 85 Q62 70 70 56 Z" fill="#e2ff00" stroke="#000000" stroke-width="2.5" />
+                  <path d="M22 55 Q15 70 20 82 Q25 90 30 80 Q32 65 26 55 Z" fill="#e2ff00" stroke="#000000" stroke-width="2.5" />
+                  <!-- X eyes -->
+                  <path d="M32 36 L44 48 M44 36 L32 48" stroke="#000000" stroke-width="4.5" stroke-linecap="round" />
+                  <path d="M56 36 L68 48 M68 36 L56 48" stroke="#000000" stroke-width="4.5" stroke-linecap="round" />
+                  <!-- Smile with tongue -->
+                  <path d="M34 60 Q50 74 66 60" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" />
+                  <path d="M48 66 Q48 80 56 82 Q62 82 58 64 Z" fill="#ff007f" stroke="#000000" stroke-width="2.5" />
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- ASYMMETRIC COLLAGE DISPLAY (From reference layout) -->
+          <div class="grid grid-cols-12 gap-4 sm:gap-6 items-center max-w-4xl mx-auto">
+            
+            <!-- 1. Model Cutout (pill shaped capsule portrait) -->
+            <div class="col-span-6 sm:col-span-3 flex justify-center">
+              <div class="group relative cursor-pointer" onclick="openProductQuickView('prod-crop-top')">
+                <div class="w-32 sm:w-36 h-48 sm:h-56 rounded-full overflow-hidden border-2 border-black bg-neutral-100 shadow-md">
+                  <img 
+                    src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=600&auto=format&fit=crop" 
+                    alt="Textured Zip Crop Hoodie" 
+                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                </div>
+                <div class="text-center mt-2 font-mono text-[11px] font-bold">
+                  <span class="block uppercase">MOTO CROP TOP</span>
+                  <span class="text-hotpink">₹1,299</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2. Circular garment cutouts -->
+            <div class="col-span-6 sm:col-span-2 flex flex-col gap-3 items-center justify-center">
+              <!-- Blue striped windbreaker circle -->
+              <div class="group relative cursor-pointer" onclick="openProductQuickView('prod-blue-stripe')">
+                <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full border-2 border-black overflow-hidden bg-neutral-50 shadow-sm">
+                  <img 
+                    src="https://images.unsplash.com/photo-1544441893-675973e31985?q=80&w=400&auto=format&fit=crop" 
+                    alt="Striped Track Zip Jacket" 
+                    class="w-full h-full object-cover group-hover:scale-110 transition-transform"
+                  />
+                </div>
+                <span class="block text-center font-mono text-[10px] font-bold mt-1">₹2,199</span>
+              </div>
+              <!-- Washed Beanie swatch -->
+              <div class="group relative cursor-pointer" onclick="openProductQuickView('prod-beanie')">
+                <div class="w-16 h-16 rounded-full border-2 border-black overflow-hidden bg-neutral-100 shadow-sm">
+                  <img 
+                    src="https://images.unsplash.com/photo-1576871337622-98d48d1cf531?q=80&w=300&auto=format&fit=crop" 
+                    alt="Graphic Knit Beanie" 
+                    class="w-full h-full object-cover group-hover:scale-110 transition-transform"
+                  />
+                </div>
+                <span class="block text-center font-mono text-[9px] font-bold mt-0.5">₹699</span>
+              </div>
+            </div>
+
+            <!-- 3. Central Lookbook Photo -->
+            <div class="col-span-12 sm:col-span-4 flex justify-center order-first sm:order-none">
+              <div class="artboard-bbox p-1 bg-white border-2 border-black shadow-lg max-w-[240px] sm:max-w-[270px] w-full">
+                <div class="bbox-handle bbox-tl"></div>
+                <div class="bbox-handle bbox-tr"></div>
+                <div class="bbox-handle bbox-bl"></div>
+                <div class="bbox-handle bbox-br"></div>
+                <div class="relative aspect-[4/5] overflow-hidden bg-neutral-900 group">
+                  <img 
+                    src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=800&auto=format&fit=crop" 
+                    alt="Street Drip Subculture Look" 
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div class="absolute bottom-2 right-2 bg-acid text-black font-mono text-[9px] px-1.5 py-0.5 font-bold border border-black">
+                    LOOK 01 // CHANDKHEDA
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 4. Circular Cutout (Model in hoodie) -->
+            <div class="col-span-6 sm:col-span-3 flex flex-col items-center justify-center">
+              <div class="group relative cursor-pointer" onclick="openProductQuickView('prod-pink-hoodie')">
+                <div class="w-28 h-28 sm:w-36 sm:h-36 rounded-full border-2 border-black overflow-hidden bg-neutral-100 shadow-md">
+                  <img 
+                    src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=500&auto=format&fit=crop" 
+                    alt="Street Drip Rebel Hoodie" 
+                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                </div>
+                <div class="text-center mt-2 font-mono text-[11px] font-bold">
+                  <span class="block uppercase">REBEL HOODIE</span>
+                  <span class="text-hotpink">₹2,499</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Bottom row of bestsellers: Bounding box Denim + Crewneck items + Go To Catalog Pill -->
+          <div class="mt-8 flex flex-wrap items-center justify-center gap-6 pt-4 border-t border-neutral-200">
+            
+            <!-- Denim Jeans swatch with bounding box -->
+            <div class="artboard-bbox p-1 bg-white border border-black flex items-center gap-3 px-3 py-2 cursor-pointer hover:border-hotpink transition-colors" onclick="openProductQuickView('prod-denim-jeans')">
+              <div class="bbox-handle bbox-tl"></div>
+              <div class="bbox-handle bbox-tr"></div>
+              <div class="bbox-handle bbox-bl"></div>
+              <div class="bbox-handle bbox-br"></div>
+              <img 
+                src="https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?q=80&w=200&auto=format&fit=crop" 
+                alt="Washed Carpenter Denim" 
+                class="w-12 h-12 object-cover border border-neutral-300"
+              />
+              <div class="font-mono text-xs">
+                <span class="font-bold block uppercase">CARPENTER JEANS</span>
+                <span class="text-neutral-500">₹2,299</span>
+              </div>
+            </div>
+
+            <!-- Vintage wash graphic crewneck swatch with bounding box -->
+            <div class="artboard-bbox p-1 bg-white border border-black flex items-center gap-3 px-3 py-2 cursor-pointer hover:border-hotpink transition-colors" onclick="openProductQuickView('prod-crewneck')">
+              <div class="bbox-handle bbox-tl"></div>
+              <div class="bbox-handle bbox-tr"></div>
+              <div class="bbox-handle bbox-bl"></div>
+              <div class="bbox-handle bbox-br"></div>
+              <img 
+                src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?q=80&w=200&auto=format&fit=crop" 
+                alt="Vintage Acid Crewneck" 
+                class="w-12 h-12 object-cover border border-neutral-300"
+              />
+              <div class="font-mono text-xs">
+                <span class="font-bold block uppercase">VINTAGE CREWNECK</span>
+                <span class="text-neutral-500">₹1,899</span>
+              </div>
+            </div>
+
+            <!-- Pink pill button: GO TO CATALOG -->
+            <a 
+              href="#new-items-section" 
+              class="capsule-clip px-7 py-3 bg-hotpink hover:bg-hotpinkHover text-white font-mono text-xs font-bold uppercase tracking-wider transition-transform active:scale-95 shadow-md flex items-center gap-2"
+            >
+              <span>GO TO CATALOG</span>
+              <span>→</span>
+            </a>
+
+          </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- 6. ABOUT THE BRAND (Street Drip Brand Identity from PDF) -->
+        <!-- ========================================================================= -->
+        <section id="about-section" class="p-6 sm:p-10 border-b-2 border-black bg-white relative">
+          
+          <h2 class="text-3xl sm:text-5xl font-black font-sans uppercase tracking-tight text-black mb-8 text-center sm:text-left">
+            ABOUT THE BRAND
+          </h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+            
+            <!-- Top photo collage with bounding box (Model at retro car through blinds) -->
+            <div class="md:col-span-7">
+              <div class="artboard-bbox p-1 bg-white border-2 border-black shadow-md">
+                <div class="bbox-handle bbox-tl"></div>
+                <div class="bbox-handle bbox-tr"></div>
+                <div class="bbox-handle bbox-bl"></div>
+                <div class="bbox-handle bbox-br"></div>
+                <div class="relative aspect-[16/10] overflow-hidden bg-black">
+                  <img 
+                    src="https://images.unsplash.com/photo-1517445312882-bc9910d016b7?q=80&w=1000&auto=format&fit=crop" 
+                    alt="Street Drip Ahmedabad Narrative" 
+                    class="w-full h-full object-cover contrast-110"
+                  />
+                  <!-- Window blinds overlay styling -->
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                  <div class="absolute bottom-3 left-3 bg-white text-black font-mono text-[10px] font-bold px-2 py-0.5 border border-black">
+                    STREET DRIP // AHMEDABAD CHAPTER
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Circular photo of girl smiling in front of car -->
+            <div class="md:col-span-5 flex flex-col items-center justify-center">
+              <div class="w-36 h-36 sm:w-44 sm:h-44 rounded-full border-2 border-black overflow-hidden shadow-md bg-neutral-100">
+                <img 
+                  src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=500&auto=format&fit=crop" 
+                  alt="Ahmedabad Streetwear Community" 
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <span class="font-mono text-xs text-neutral-500 font-bold uppercase mt-2">GUJARAT STREET CULTURE</span>
+            </div>
+
+          </div>
+
+          <!-- Manifesto Texts from the PDF (Name Signal & Territory Analysis) -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8 pt-6 border-t border-neutral-200">
+            
+            <div class="space-y-3">
+              <span class="font-mono text-xs font-bold text-hotpink uppercase">// THE NAME SIGNAL: STREET + DRIP</span>
+              <p class="font-mono text-xs sm:text-sm text-black font-bold uppercase leading-relaxed">
+                “Street Drip” strongly communicates street-fashion and youth-culture positioning. “Street” represents urban culture, casual authenticity and underground movements, while “Drip” is about personal style, confidence, and fashionable outfits that turn heads.
+              </p>
+            </div>
+
+            <div class="space-y-3">
+              <span class="font-mono text-xs font-bold text-neutral-500 uppercase">// PHYSICAL FOOTPRINT IN CHANDKHEDA</span>
+              <p class="font-mono text-xs sm:text-sm text-neutral-700 font-medium uppercase leading-relaxed">
+                From our storefront on Gathiya Rath Road (opposite Casa The Status, Chandkheda), we provide Ahmedabad with an unfiltered gateway to contemporary casual fashion, oversized silhouettes, and high-energy apparel.
+              </p>
+            </div>
+
+          </div>
+
+          <!-- Secondary Collage Block: Fish-eye Group + Crown Model + Doodles -->
+          <div class="grid grid-cols-1 sm:grid-cols-12 gap-6 items-center mt-10 pt-8 border-t border-neutral-200">
+            
+            <!-- Oval / pill vertical photo of 4 youths looking down into fish-eye lens + pink doodle ♡x♡x -->
+            <div class="sm:col-span-6 flex flex-col items-center relative">
+              <div class="absolute -top-5 left-8 text-hotpink font-mono font-black text-xl select-none z-10">
+                ♡x♡x
+              </div>
+              <div class="w-48 sm:w-56 h-64 sm:h-72 capsule-clip overflow-hidden border-2 border-black shadow-lg bg-neutral-900">
+                <img 
+                  src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=600&auto=format&fit=crop" 
+                  alt="Street Youth Subculture in Gujarat" 
+                  class="w-full h-full object-cover contrast-115"
+                />
+              </div>
+            </div>
+
+            <!-- Model with doodle yellow crown over head -->
+            <div class="sm:col-span-6 space-y-4">
+              <div class="relative inline-block">
+                <!-- Basquiat yellow spray crown doodle over head -->
+                <div class="absolute -top-7 left-6 z-10 select-none">
+                  <svg class="w-12 h-10" viewBox="0 0 50 35" fill="none">
+                    <path d="M5 30 L5 12 L18 22 L25 5 L32 22 L45 12 L45 30 Z" fill="#e2ff00" stroke="#000000" stroke-width="2.5" stroke-linejoin="round" />
+                  </svg>
+                </div>
+                <div class="artboard-bbox p-1 bg-white border border-black w-48 sm:w-56">
+                  <div class="bbox-handle bbox-tl"></div>
+                  <div class="bbox-handle bbox-tr"></div>
+                  <div class="bbox-handle bbox-bl"></div>
+                  <div class="bbox-handle bbox-br"></div>
+                  <img 
+                    src="https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?q=80&w=500&auto=format&fit=crop" 
+                    alt="Street Drip Model with Crown" 
+                    class="w-full h-60 object-cover"
+                  />
+                </div>
+              </div>
+
+              <p class="font-mono text-xs text-neutral-600 uppercase font-medium leading-relaxed max-w-sm">
+                We believe in the power of street-level innovation—pushing boundaries, rejecting vanilla basics, and arming Ahmedabad's youth with distinct wardrobe statements.
+              </p>
+
+              <!-- Hot pink pill button: MORE DETAILS -->
+              <div>
+                <button 
+                  type="button" 
+                  onclick="openAboutDossier()" 
+                  class="capsule-clip px-6 py-2.5 bg-hotpink hover:bg-hotpinkHover text-white font-mono text-xs font-bold uppercase tracking-wider transition-transform active:scale-95 shadow-sm"
+                >
+                  BRAND DOSSIER & REPORT
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- 7. NEW ITEMS SECTION (Acid Yellow Banner + Card Grid with Border Tabs) -->
+        <!-- ========================================================================= -->
+        <section id="new-items-section" class="border-b-2 border-black bg-white">
+          
+          <!-- Acid Yellow Header Strip from reference image with winged heart graffiti -->
+          <div class="bg-acid p-6 sm:p-8 border-b-2 border-black text-center relative overflow-hidden">
+            <!-- Winged heart graffiti icon -->
+            <div class="inline-block mb-1 select-none">
+              <svg class="w-12 h-9 mx-auto" viewBox="0 0 70 45" fill="none">
+                <!-- Wing left -->
+                <path d="M22 22 C 10 12, 4 20, 2 28 C 10 27, 18 25, 24 24" stroke="#ff007f" stroke-width="2.5" fill="#ff007f" fill-opacity="0.3" />
+                <!-- Wing right -->
+                <path d="M48 22 C 60 12, 66 20, 68 28 C 60 27, 52 25, 46 24" stroke="#ff007f" stroke-width="2.5" fill="#ff007f" fill-opacity="0.3" />
+                <!-- Center heart -->
+                <path d="M35 15 C 31 10, 22 10, 22 19 C 22 27, 35 36, 35 36 C 35 36, 48 27, 48 19 C 48 10, 39 10, 35 15 Z" fill="#ff007f" stroke="#000000" stroke-width="2" />
+              </svg>
+            </div>
+
+            <h2 class="text-3xl sm:text-5xl font-black font-sans uppercase tracking-tight text-black">
+              NEW ITEMS
+            </h2>
+
+            <p class="font-mono text-xs sm:text-sm text-neutral-900 font-bold uppercase max-w-xl mx-auto mt-2 leading-relaxed">
+              Our new arrivals embody the spirit of freedom, rebellion and self-identification. Explore limited drops and DM or WhatsApp for instant sizing & availability.
+            </p>
+
+            <!-- Quick Category Pill Filter -->
+            <div class="mt-4 flex flex-wrap justify-center gap-2 font-mono text-xs">
+              <button onclick="filterCatalog('all')" class="cat-pill active px-3.5 py-1.5 bg-black text-white font-bold rounded-full border border-black">ALL [11]</button>
+              <button onclick="filterCatalog('tops')" class="cat-pill px-3.5 py-1.5 bg-white text-black hover:bg-black hover:text-white font-bold rounded-full border border-black transition-colors">TOPS</button>
+              <button onclick="filterCatalog('outerwear')" class="cat-pill px-3.5 py-1.5 bg-white text-black hover:bg-black hover:text-white font-bold rounded-full border border-black transition-colors">OUTERWEAR</button>
+              <button onclick="filterCatalog('bottoms')" class="cat-pill px-3.5 py-1.5 bg-white text-black hover:bg-black hover:text-white font-bold rounded-full border border-black transition-colors">BOTTOMS</button>
+              <button onclick="filterCatalog('accessories')" class="cat-pill px-3.5 py-1.5 bg-white text-black hover:bg-black hover:text-white font-bold rounded-full border border-black transition-colors">ACCESSORIES</button>
+            </div>
+          </div>
+
+          <!-- Product Grid with Technical Border Tabs ([BEANIE], [BAG], [JACKET], [POLO], etc.) -->
+          <div id="new-items-grid" class="p-6 sm:p-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8 bg-neutral-50">
+            <!-- Dynamic items rendered via JS with real Indian Rupee e-commerce and WhatsApp ordering -->
+          </div>
+
+          <!-- Center Pink Button: ALL NEW ITEMS -->
+          <div class="py-8 bg-neutral-50 text-center border-t border-neutral-200">
+            <button 
+              type="button" 
+              onclick="showToast('ALL 11 STREET DRIP CAPSULES CURRENTLY LOADED.')" 
+              class="capsule-clip px-8 py-3.5 bg-hotpink hover:bg-hotpinkHover text-white font-mono text-xs font-bold uppercase tracking-wider transition-transform active:scale-95 shadow-md inline-flex items-center gap-2"
+            >
+              <span>ALL NEW ITEMS // IN STOCK</span>
+              <span>★</span>
+            </button>
+          </div>
+
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- 8. READY-MADE OUTFITS & MOBILE ARTBOARD PREVIEWS -->
+        <!-- ========================================================================= -->
+        <section id="outfits-section" class="p-6 sm:p-10 bg-white relative">
+          
+          <div class="text-center mb-10">
+            <span class="font-mono text-xs text-neutral-500 font-bold uppercase tracking-widest">// STREET DRIP STYLING</span>
+            <h2 class="text-3xl sm:text-5xl font-black font-sans uppercase tracking-tight text-black mt-1">
+              READY-MADE OUTFITS
+            </h2>
+            <p class="font-mono text-xs text-neutral-600 uppercase mt-1">
+              CHOOSE A READY-MADE LOOK FROM STREET DRIP AND EXPRESS YOUR BRIGHT INDIVIDUALITY
+            </p>
+          </div>
+
+          <!-- Grid of Phone / Card Frames inspired by the bottom row of the reference image -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 items-start">
+            
+            <!-- 1. Left Phone Mockup: Yellow Outfit Card with Model & Garment Thumbnails -->
+            <div class="border-2 border-black bg-acid p-4 rounded-2xl shadow-xl flex flex-col justify-between min-h-[480px]">
+              <div>
+                <!-- Phone top bar -->
+                <div class="flex justify-between items-center font-mono text-[10px] font-bold border-b border-black pb-2 mb-3">
+                  <span>10:00 AM</span>
+                  <span class="text-hotpink font-black">STREET DRIP</span>
+                  <span>5G ■</span>
+                </div>
+                
+                <h3 class="font-black text-xl font-sans uppercase leading-tight">READY-MADE OUTFITS</h3>
+                <p class="font-mono text-[10px] uppercase text-neutral-800 mt-1 font-bold">
+                  Curated outfits styled in Chandkheda. Wear together or mix with your existing drip.
+                </p>
+
+                <!-- Model Lookbook Preview in phone -->
+                <div class="mt-3 relative aspect-[3/4] border-2 border-black bg-black overflow-hidden">
+                  <img 
+                    id="outfit-model-img"
+                    src="https://images.unsplash.com/photo-1509967419530-da38b4704bc6?q=80&w=700&auto=format&fit=crop" 
+                    alt="Ready Made Street Drip Look" 
+                    class="w-full h-full object-cover"
+                  />
+                  <div id="outfit-badge" class="absolute bottom-2 left-2 bg-white text-black font-mono text-[9px] px-1.5 py-0.5 font-bold border border-black">
+                    LOOK 01 // AHMEDABAD NOIR
+                  </div>
+                </div>
+              </div>
+
+              <!-- Mini garment thumbnails below to toggle outfit -->
+              <div class="mt-4 pt-3 border-t border-black">
+                <span class="font-mono text-[9px] font-bold uppercase block mb-1.5">PIECES IN THIS OUTFIT:</span>
+                <div class="flex items-center gap-1.5 overflow-x-auto pb-1">
+                  <img onclick="switchOutfit(1)" src="https://images.unsplash.com/photo-1548883354-7622d03aca27?q=80&w=150&auto=format&fit=crop" class="w-10 h-10 object-cover border border-black cursor-pointer hover:border-hotpink" title="Bomber" />
+                  <img onclick="switchOutfit(1)" src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?q=80&w=150&auto=format&fit=crop" class="w-10 h-10 object-cover border border-black cursor-pointer hover:border-hotpink" title="Tee" />
+                  <img onclick="switchOutfit(1)" src="https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?q=80&w=150&auto=format&fit=crop" class="w-10 h-10 object-cover border border-black cursor-pointer hover:border-hotpink" title="Cargo" />
+                  <img onclick="switchOutfit(1)" src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=150&auto=format&fit=crop" class="w-10 h-10 object-cover border border-black cursor-pointer hover:border-hotpink" title="Boots" />
+                </div>
+                <button 
+                  onclick="addFullOutfitToCart()" 
+                  class="mt-3 w-full py-2 bg-black hover:bg-neutral-800 text-white font-mono text-[11px] font-bold uppercase tracking-wider transition-colors active:scale-95"
+                >
+                  ADD FULL LOOK TO BAG (₹8,996)
+                </button>
+              </div>
+            </div>
+
+            <!-- 2. Center Phone Mockup: "CLOTHES FOR THOSE WHO CREATE THEIR OWN RULES" -->
+            <div class="border-2 border-black bg-white p-4 rounded-2xl shadow-xl flex flex-col justify-between min-h-[480px]">
+              <div>
+                <!-- Phone top bar with dynamic island notch -->
+                <div class="flex justify-between items-center font-mono text-[10px] font-bold border-b border-black pb-2 mb-3">
+                  <span>10:00 AM</span>
+                  <div class="w-16 h-3.5 bg-black rounded-full"></div>
+                  <span>100%</span>
+                </div>
+
+                <div class="bg-acid p-3 border border-black mb-3">
+                  <h3 class="font-black text-lg font-sans uppercase leading-tight">CLOTHES FOR THOSE WHO CREATE THEIR OWN RULES</h3>
+                  <span class="font-mono text-[10px] text-hotpink font-bold block mt-1">♡x♡x STREET DRIP OFFICIAL</span>
+                </div>
+
+                <!-- Street art stencil cutout figure -->
+                <div class="relative aspect-[3/4] border border-black bg-neutral-900 overflow-hidden flex items-center justify-center">
+                  <img 
+                    src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=600&auto=format&fit=crop" 
+                    alt="Street Drip Stencil Look" 
+                    class="w-full h-full object-cover grayscale contrast-125"
+                  />
+                  <!-- Neon Pink spray aura silhouette effect -->
+                  <div class="absolute inset-0 bg-hotpink/20 mix-blend-screen pointer-events-none"></div>
+                  <div class="absolute bottom-2 right-2 bg-hotpink text-white font-mono text-[9px] px-2 py-0.5 font-bold uppercase">
+                    CHANDKHEDA EDIT
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-4 pt-3 border-t border-neutral-200">
+                <a 
+                  href="#new-items-section" 
+                  class="block text-center py-2 bg-hotpink hover:bg-hotpinkHover text-white font-mono text-[11px] font-bold uppercase tracking-wider transition-colors"
+                >
+                  EXPLORE DROP APPAREL
+                </a>
+              </div>
+            </div>
+
+            <!-- 3. Right Phone Mockup: "STORE & LOCATION DOSSIER" -->
+            <div class="border-2 border-black bg-neutral-50 p-4 rounded-2xl shadow-xl flex flex-col justify-between min-h-[480px]">
+              <div>
+                <!-- Phone top bar -->
+                <div class="flex justify-between items-center font-mono text-[10px] font-bold border-b border-neutral-300 pb-2 mb-3">
+                  <span>10:00 AM</span>
+                  <span class="font-black">STREET DRIP</span>
+                  <span>5G</span>
+                </div>
+
+                <h3 class="font-black text-lg font-sans uppercase">CHANDKHEDA STORE</h3>
+                
+                <div class="space-y-2 mt-3 font-mono text-[10px] uppercase leading-relaxed text-neutral-700">
+                  <div class="aspect-video bg-black overflow-hidden border border-black mb-2">
+                    <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover" />
+                  </div>
+                  <p class="font-bold text-black">
+                    📍 Gathiya Rath Rd, Opp Casa The Status, Chandkheda
+                  </p>
+                  <p>
+                    📞 Phone: +91 99244 69685
+                  </p>
+                  <p class="text-hotpink font-bold">
+                    ★ 5.0 Google Rating (11 Verified Reviews)
+                  </p>
+                </div>
+              </div>
+
+              <div class="mt-4 pt-3 border-t border-neutral-200 flex flex-col gap-2">
+                <a 
+                  href="https://wa.me/919924469685?text=Hi%20Street%20Drip!%20I%20saw%20your%20ready-made%20outfits%20and%20want%20to%20order." 
+                  target="_blank" 
+                  class="w-full py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-center font-mono text-[11px] font-bold uppercase tracking-wider transition-colors"
+                >
+                  WHATSAPP FOR SIZES
+                </a>
+                <button 
+                  onclick="openAboutDossier()" 
+                  class="w-full py-2 bg-acid hover:bg-acidHover text-black border border-black font-mono text-[11px] font-bold uppercase tracking-wider transition-colors"
+                >
+                  READ BRAND REPORT
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+        </section>
+
+      </div>
+    </main>
+
+    <!-- 9. SLIDE-OUT CART DRAWER -->
+    <!-- Drawer Backdrop -->
+    <div 
+      id="cart-backdrop" 
+      class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 transition-opacity duration-300 opacity-0 pointer-events-none"
+      aria-hidden="true"
+    ></div>
+
+    <!-- Slide Cart Panel -->
+    <aside 
+      id="slide-cart-panel" 
+      class="fixed top-0 right-0 h-full w-full max-w-md bg-white border-l-2 border-black z-50 transform translate-x-full transition-transform duration-300 ease-out flex flex-col shadow-2xl"
+      aria-label="Shopping Bag Drawer"
+      role="dialog"
+      aria-modal="true"
+    >
+      <!-- Cart Header -->
+      <div class="p-5 border-b-2 border-black flex items-center justify-between bg-acid">
+        <div class="flex items-center gap-2">
+          <span class="text-hotpink font-mono text-lg font-bold">★</span>
+          <h2 class="font-sans font-black text-xl uppercase tracking-tight text-black">
+            YOUR STREET DRIP BAG
+          </h2>
+          <span id="cart-drawer-count" class="font-mono text-xs font-bold text-neutral-800">([0])</span>
+        </div>
+        <button 
+          id="cart-close-btn" 
+          type="button" 
+          aria-label="Close Shopping Bag"
+          class="p-2 border border-black bg-white hover:bg-black hover:text-white transition-colors font-mono text-xs font-bold"
+        >
+          [ESC / ✕]
+        </button>
+      </div>
+
+      <!-- Shipping Goal Progress Bar (₹1,999 goal) -->
+      <div class="px-5 py-3 bg-neutral-100 border-b border-black font-mono text-xs">
+        <div class="flex justify-between items-center text-[11px] font-bold mb-1.5">
+          <span id="shipping-progress-text" class="text-black">ADD ₹1,999 MORE FOR FREE SHIPPING</span>
+          <span class="text-hotpink font-bold">₹1,999 GOAL</span>
+        </div>
+        <div class="w-full h-2 bg-neutral-300 overflow-hidden border border-black">
+          <div id="shipping-progress-bar" class="h-full bg-hotpink transition-all duration-300 w-0"></div>
+        </div>
+      </div>
+
+      <!-- Cart Items Container -->
+      <div id="cart-items-container" class="flex-1 overflow-y-auto p-5 space-y-4 divide-y divide-neutral-200">
+        <!-- Rendered reactively via JS -->
+      </div>
+
+      <!-- Cart Calculation & Checkout Options -->
+      <div class="p-5 bg-neutral-50 border-t-2 border-black font-mono text-xs space-y-3">
+        <div class="space-y-1.5 text-neutral-700 text-[11px] font-bold">
+          <div class="flex justify-between">
+            <span>SUBTOTAL:</span>
+            <span id="cart-subtotal" class="text-black font-bold">₹0</span>
+          </div>
+          <div class="flex justify-between">
+            <span>GST & PACKAGING (INCLUDED):</span>
+            <span id="cart-tax" class="text-black">₹0</span>
+          </div>
+          <div class="flex justify-between">
+            <span>DELIVERY / PICK-UP:</span>
+            <span id="cart-shipping" class="text-emerald-700 font-bold">FREE PICK-UP IN CHANDKHEDA</span>
+          </div>
+          <div class="flex justify-between pt-2 border-t border-neutral-300 text-base text-black font-black font-sans">
+            <span>FINAL TOTAL:</span>
+            <span id="cart-total" class="text-black font-mono">₹0</span>
+          </div>
+        </div>
+
+        <!-- WhatsApp Checkout Action Button -->
+        <button 
+          id="whatsapp-checkout-btn" 
+          type="button"
+          onclick="checkoutViaWhatsApp()"
+          class="w-full py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold uppercase font-mono text-xs tracking-wider transition-all border border-black flex items-center justify-center gap-2 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed"
+        >
+          <span>ORDER VIA WHATSAPP (+91 99244 69685)</span>
+          <span>💬</span>
+        </button>
+
+        <!-- Standard Checkout Button -->
+        <button 
+          id="checkout-btn" 
+          type="button"
+          class="w-full py-3 bg-black hover:bg-neutral-800 text-white font-bold uppercase font-mono text-xs tracking-wider transition-all border border-black flex items-center justify-center gap-2 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed"
+        >
+          <span>ONLINE PAYMENT (UPI / CARDS / COD)</span>
+          <span>→</span>
+        </button>
+
+        <p class="text-center text-[10px] text-neutral-500 uppercase tracking-wider font-bold">
+          VISIT STORE IN CHANDKHEDA OR ORDER VIA WHATSAPP / INSTAGRAM
+        </p>
+      </div>
+    </aside>
+
+    <!-- 10. FOOTER (Street Drip Ahmedabad Verified Information) -->
+    <footer class="bg-darkbg border-t-2 border-black text-white font-mono text-xs mt-12 py-12">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6">
+        
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-10 border-b border-borderdark">
+          
+          <!-- Store Snapshot & Quick Contact -->
+          <div class="md:col-span-5 space-y-3">
+            <div class="flex items-center gap-2 font-black font-sans text-xl uppercase tracking-tighter text-acid">
+              <span>STREET DRIP // AHMEDABAD</span>
+              <span class="text-hotpink text-xs">♡x♡x</span>
+            </div>
+            <p class="text-neutral-400 text-xs uppercase leading-relaxed font-mono">
+              Street Drip is a premier fashion & clothing retail destination in Chandkheda, Ahmedabad, catering to urban youth, creators, and bold dressers.
+            </p>
+            <div class="text-neutral-300 text-[11px] space-y-1 pt-1 border-t border-neutral-800">
+              <p>📍 Gathiya Rath Road, opposite Casa The Status, Chandkheda, Ahmedabad, Gujarat 382424</p>
+              <p>📞 Phone: <a href="tel:+919924469685" class="text-acid underline">+91 99244 69685</a></p>
+              <p>⏰ Mon–Sat: 10:00 AM – 8:00 PM (Closed Sun)</p>
+              <p>🌟 5.0 / 5.0 Google Listing (11 reviews) • 4.9 Magicpin</p>
+            </div>
+          </div>
+
+          <!-- Quick Navigation -->
+          <div class="md:col-span-3 space-y-2 text-neutral-400">
+            <h4 class="text-white font-bold uppercase">// STORE SECTIONS</h4>
+            <ul class="space-y-1.5">
+              <li><a href="#bestsellers-section" class="hover:text-acid transition-colors">BESTSELLERS</a></li>
+              <li><a href="#store-profile-section" class="hover:text-acid transition-colors">STORE & TIMINGS</a></li>
+              <li><a href="#new-items-section" class="hover:text-acid transition-colors">NEW ARRIVALS</a></li>
+              <li><a href="#about-section" class="hover:text-acid transition-colors">BRAND PROFILE</a></li>
+              <li><a href="#outfits-section" class="hover:text-acid transition-colors">READY-MADE LOOKS</a></li>
+            </ul>
+          </div>
+
+          <!-- Direct Channels from PDF -->
+          <div class="md:col-span-4 space-y-2 text-neutral-400">
+            <h4 class="text-white font-bold uppercase">// OFFICIAL CHANNELS</h4>
+            <ul class="space-y-1.5">
+              <li>
+                <a href="https://instagram.com/streetdripahmedabad" target="_blank" rel="noopener noreferrer" class="hover:text-hotpink transition-colors flex items-center gap-1.5">
+                  <span>📸</span>
+                  <span>INSTAGRAM: @streetdripahmedabad</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://wa.me/919924469685" target="_blank" rel="noopener noreferrer" class="hover:text-acid transition-colors flex items-center gap-1.5">
+                  <span>💬</span>
+                  <span>WHATSAPP: +91 99244 69685</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.google.com/maps/search/?api=1&query=4HFH%2B89Q+Chandkheda+Ahmedabad" target="_blank" rel="noopener noreferrer" class="hover:text-acid transition-colors flex items-center gap-1.5">
+                  <span>📍</span>
+                  <span>MAPS PLUS CODE: 4HFH+89Q</span>
+                </a>
+              </li>
+              <li class="pt-2 text-neutral-500 text-[10px]">
+                Report prepared from verified Google Business & Magicpin listings (September 2026).
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- Copyright & Dynamic Time -->
+        <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-neutral-500">
+          <div>
+            © 2026 STREET DRIP CLOTHING. CHANDKHEDA, AHMEDABAD, GUJARAT.
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="w-2 h-2 bg-acid rounded-full animate-ping"></span>
+            <span class="text-neutral-400 uppercase font-bold">CHANDKHEDA // AHMEDABAD</span>
+          </div>
+        </div>
+
+      </div>
+    </footer>
+
+    <!-- TOAST NOTIFICATION CONTAINER -->
+    <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2 pointer-events-none" aria-live="polite"></div>
+
+    <!-- ABOUT / BRAND PROFILE DOSSIER MODAL -->
+    <div id="dossier-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+      <div class="bg-white border-2 border-black max-w-lg w-full p-6 sm:p-8 relative shadow-2xl max-h-[90vh] overflow-y-auto">
+        <button onclick="closeAboutDossier()" class="absolute top-4 right-4 text-black hover:text-hotpink font-mono text-sm font-bold p-1">
+          [✕]
+        </button>
+        <span class="font-mono text-xs text-hotpink uppercase font-bold">// VERIFIED BRAND & RETAIL PROFILE</span>
+        <h3 class="text-2xl font-black font-sans uppercase text-black mt-1 mb-3">STREET DRIP AHMEDABAD</h3>
+        
+        <div class="space-y-3 font-mono text-xs text-neutral-700 leading-relaxed uppercase">
+          <div class="p-3 bg-acid border border-black text-black font-bold text-[11px]">
+            ★ 5.0 / 5.0 GOOGLE LISTING (11 REVIEWS) • 4.9 MAGICPIN (8 RATINGS)
+          </div>
+          <p>
+            <strong>Store Name:</strong> Street Drip / Street drip clothing shop<br/>
+            <strong>Location:</strong> 4HFH+89Q, Chandkheda, Ahmedabad, Gujarat 382424<br/>
+            <strong>Address Listing:</strong> Gathiya Rath Road, opposite Casa The Status, Chandkheda, Ahmedabad<br/>
+            <strong>Category:</strong> Fashion accessories / clothing retail<br/>
+            <strong>Hours:</strong> 10:00 AM – 8:00 PM, Monday–Saturday (Closed Sunday)<br/>
+            <strong>Direct Phone:</strong> +91 99244 69685<br/>
+            <strong>Instagram:</strong> @streetdripahmedabad
+          </p>
+          <p>
+            <strong>Brand Territory:</strong> Street Drip positions itself around urban youth fashion, casual statements, and vibrant social-media-friendly outfits. The brand is built on individuality, bold cuts, and high-energy street apparel.
+          </p>
+          <div class="p-3 bg-neutral-100 border border-neutral-300 text-black text-[10px]">
+            <strong>Customer Journey:</strong> Direct store visits in Chandkheda + "WhatsApp for sizes" and "DM for availability" on Instagram.
+          </div>
+        </div>
+
+        <div class="mt-5 flex flex-wrap justify-between items-center gap-2">
+          <a 
+            href="https://wa.me/919924469685" 
+            target="_blank" 
+            class="px-4 py-2 bg-emerald-600 text-white font-mono text-xs uppercase font-bold hover:bg-emerald-700"
+          >
+            CHAT ON WHATSAPP
+          </a>
+          <button onclick="closeAboutDossier()" class="px-5 py-2 bg-black text-white font-mono text-xs uppercase font-bold hover:bg-hotpink">
+            CLOSE DOSSIER
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- JAVASCRIPT STATE ENGINE -->
+    <script>
+      /**
+       * STREET DRIP AHMEDABAD // Retail Experience Engine
+       * Built with verified details from Brand & Retail Profile PDF
+       */
+
+      // 1. PRODUCT CATALOG WITH INDIAN RUPEE (₹) PRICING & BORDER TABS
+      const CATALOG_ITEMS = [
+        {
+          id: 'prod-beanie',
+          tab: 'BEANIE',
+          name: 'Graphic Knit Street Beanie',
+          category: 'accessories',
+          price: 699,
+          image: 'https://images.unsplash.com/photo-1576871337622-98d48d1cf531?q=80&w=400&auto=format&fit=crop',
+          sizes: ['FREE SIZE'],
+          colors: ['Onyx Black', 'Acid Lime']
+        },
+        {
+          id: 'prod-bag',
+          tab: 'BAG',
+          name: 'Graffiti Street Drip Crossbody',
+          category: 'accessories',
+          price: 1499,
+          image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?q=80&w=400&auto=format&fit=crop',
+          sizes: ['ONE SIZE'],
+          colors: ['White / Street Charms', 'Blackout']
+        },
+        {
+          id: 'prod-jacket',
+          tab: 'JACKET',
+          name: 'Shearling Aviator Drop Bomber',
+          category: 'outerwear',
+          price: 3499,
+          image: 'https://images.unsplash.com/photo-1548883354-7622d03aca27?q=80&w=400&auto=format&fit=crop',
+          sizes: ['M', 'L', 'XL'],
+          colors: ['Vintage Cognac', 'Noir']
+        },
+        {
+          id: 'prod-polo',
+          tab: 'POLO',
+          name: 'Colorblock Knit Urban Polo',
+          category: 'tops',
+          price: 1299,
+          image: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=400&auto=format&fit=crop',
+          sizes: ['S', 'M', 'L', 'XL'],
+          colors: ['Cobalt / White', 'Green / Cream']
+        },
+        {
+          id: 'prod-cap',
+          tab: 'CAP',
+          name: 'Distressed Vintage Street Cap',
+          category: 'accessories',
+          price: 799,
+          image: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?q=80&w=400&auto=format&fit=crop',
+          sizes: ['ADJUSTABLE'],
+          colors: ['Cherry Red', 'Washed Brown']
+        },
+        {
+          id: 'prod-tee',
+          tab: 'T-SHIRT',
+          name: 'Raw Seam Acid Graphic Tee',
+          category: 'tops',
+          price: 999,
+          image: 'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?q=80&w=400&auto=format&fit=crop',
+          sizes: ['S', 'M', 'L', 'XL'],
+          colors: ['Safety Orange', 'Acid Lime', 'Pure Chalk']
+        },
+        {
+          id: 'prod-zip-hoodie',
+          tab: 'ZIP HOODIE',
+          name: 'Heavy Double-Zip Drip Hoodie',
+          category: 'outerwear',
+          price: 2699,
+          image: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=400&auto=format&fit=crop',
+          sizes: ['S', 'M', 'L', 'XL'],
+          colors: ['Washed Charcoal', 'Vintage Navy']
+        },
+        {
+          id: 'prod-crewneck',
+          tab: 'SWEATER',
+          name: 'Distressed "DRIP" Crewneck',
+          category: 'tops',
+          price: 1899,
+          image: 'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?q=80&w=400&auto=format&fit=crop',
+          sizes: ['S', 'M', 'L', 'XL'],
+          colors: ['Muted Heather', 'Bone White']
+        },
+        {
+          id: 'prod-boots',
+          tab: 'BOOTS',
+          name: 'Chunky Lug Sole Combat Boots',
+          category: 'bottoms',
+          price: 3199,
+          image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=400&auto=format&fit=crop',
+          sizes: ['40', '41', '42', '43', '44'],
+          colors: ['Olive / Neon Stitch', 'Triple Black']
+        },
+        {
+          id: 'prod-denim-jeans',
+          tab: 'JEANS',
+          name: 'Washed Carpenter Street Denim',
+          category: 'bottoms',
+          price: 2299,
+          image: 'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?q=80&w=400&auto=format&fit=crop',
+          sizes: ['30', '32', '34', '36'],
+          colors: ['Acid Bleached Blue', 'Smoked Grey']
+        },
+        {
+          id: 'prod-shorts',
+          tab: 'SHORTS',
+          name: 'Graffiti Tagged Heavy Shorts',
+          category: 'bottoms',
+          price: 1199,
+          image: 'https://images.unsplash.com/photo-1591195853828-11db59a44f6b?q=80&w=400&auto=format&fit=crop',
+          sizes: ['S', 'M', 'L', 'XL'],
+          colors: ['Red Camo Tag', 'Matte Black']
+        }
+      ];
+
+      // 2. APPLICATION STATE
+      const state = {
+        cart: [],
+        currentCategory: 'all',
+        isCartOpen: false
+      };
+
+      // Load cart from storage
+      try {
+        const saved = localStorage.getItem('street_drip_cart');
+        if (saved) state.cart = JSON.parse(saved);
+      } catch (e) {}
+
+      function saveCart() {
+        try {
+          localStorage.setItem('street_drip_cart', JSON.stringify(state.cart));
+        } catch (e) {}
+      }
+
+      // 3. TOAST MESSAGING
+      function showToast(message) {
+        const container = document.getElementById('toast-container');
+        if (!container) return;
+        const toast = document.createElement('div');
+        toast.className = 'bg-black border-2 border-acid text-white px-4 py-3 font-mono text-xs flex items-center gap-3 shadow-2xl transition-all duration-300 transform translate-y-4 opacity-0 pointer-events-auto max-w-sm';
+        toast.innerHTML = `
+          <span class="text-hotpink font-bold">★</span>
+          <div class="flex-1 uppercase font-bold tracking-wider">${message}</div>
+        `;
+        container.appendChild(toast);
+
+        requestAnimationFrame(() => {
+          toast.classList.remove('translate-y-4', 'opacity-0');
+        });
+
+        setTimeout(() => {
+          toast.classList.add('opacity-0', 'translate-y-2');
+          setTimeout(() => toast.remove(), 300);
+        }, 3200);
+      }
+
+      // 4. RENDER NEW ITEMS GRID
+      function renderNewItems() {
+        const container = document.getElementById('new-items-grid');
+        if (!container) return;
+
+        const filtered = state.currentCategory === 'all' 
+          ? CATALOG_ITEMS 
+          : CATALOG_ITEMS.filter(item => item.category === state.currentCategory);
+
+        container.innerHTML = filtered.map(item => `
+          <div class="relative bg-white border-2 border-black p-2 sm:p-3 flex flex-col justify-between group hover:shadow-lg transition-shadow">
+            <!-- Pinned category tab label -->
+            <span class="card-tab-label">[${item.tab}]</span>
+
+            <!-- Image with quick view trigger -->
+            <div class="relative aspect-square overflow-hidden bg-neutral-100 border border-neutral-200 mt-2 cursor-pointer" onclick="openProductQuickView('${item.id}')">
+              <img 
+                src="${item.image}" 
+                alt="${item.name}" 
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
+              />
+              <div class="absolute inset-x-0 bottom-0 bg-black/80 text-white p-1 text-center font-mono text-[9px] font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                QUICK VIEW & SIZE
+              </div>
+            </div>
+
+            <!-- Details & Direct Actions -->
+            <div class="mt-3 space-y-2 flex-1 flex flex-col justify-between">
+              <div>
+                <h4 class="font-sans font-bold text-xs uppercase leading-tight text-black line-clamp-1">
+                  ${item.name}
+                </h4>
+                <div class="font-mono text-xs font-black text-hotpink mt-0.5">
+                  ₹${item.price.toLocaleString('en-IN')}
+                </div>
+              </div>
+
+              <div class="space-y-1">
+                <button 
+                  type="button" 
+                  onclick="addToCart('${item.id}')" 
+                  class="w-full py-1.5 bg-black hover:bg-acid hover:text-black text-white font-mono text-[10px] font-bold uppercase tracking-wider transition-colors active:scale-95 border border-black"
+                >
+                  + ADD TO BAG
+                </button>
+                <a 
+                  href="https://wa.me/919924469685?text=Hi%20Street%20Drip!%20I'm%20inquiring%20about%20the%20${encodeURIComponent(item.name)}%20(₹${item.price})%20availability%20in%20Chandkheda." 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  class="block text-center py-1 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 font-mono text-[9px] font-bold uppercase border border-emerald-300 transition-colors"
+                >
+                  WHATSAPP FOR SIZE 💬
+                </a>
+              </div>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      function filterCatalog(cat) {
+        state.currentCategory = cat;
+        document.querySelectorAll('.cat-pill').forEach(btn => {
+          btn.classList.remove('bg-black', 'text-white');
+          btn.classList.add('bg-white', 'text-black');
+        });
+        const activeBtn = event ? event.target : null;
+        if (activeBtn) {
+          activeBtn.classList.remove('bg-white', 'text-black');
+          activeBtn.classList.add('bg-black', 'text-white');
+        }
+        renderNewItems();
+      }
+
+      // 5. CART ENGINE & DRAWER
+      function addToCart(productId, selectedSize = null) {
+        const item = CATALOG_ITEMS.find(p => p.id === productId);
+        if (!item) {
+          // Default fallbacks for items from collage
+          const fallbackMap = {
+            'prod-crop-top': { id: 'prod-crop-top', name: 'Moto Crop Top', price: 1299, image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400', size: 'M' },
+            'prod-blue-stripe': { id: 'prod-blue-stripe', name: 'Striped Track Zip Jacket', price: 2199, image: 'https://images.unsplash.com/photo-1544441893-675973e31985?q=80&w=400', size: 'L' },
+            'prod-pink-hoodie': { id: 'prod-pink-hoodie', name: 'Street Drip Rebel Hoodie', price: 2499, image: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=400', size: 'L' }
+          };
+          const fallback = fallbackMap[productId];
+          if (fallback) {
+            const existing = state.cart.find(c => c.id === fallback.id);
+            if (existing) existing.quantity += 1;
+            else state.cart.push({ ...fallback, quantity: 1 });
+            saveCart();
+            updateCartUI();
+            showToast(`+ ${fallback.name} ADDED TO BAG`);
+            openCart();
+          }
+          return;
+        }
+
+        const size = selectedSize || item.sizes[0];
+        const existingIndex = state.cart.findIndex(c => c.id === item.id && c.size === size);
+
+        if (existingIndex > -1) {
+          state.cart[existingIndex].quantity += 1;
+        } else {
+          state.cart.push({
+            id: item.id,
+            name: item.name,
+            price: item.price,
+            image: item.image,
+            size: size,
+            quantity: 1
+          });
+        }
+
+        saveCart();
+        updateCartUI();
+        showToast(`+ ${item.name} (${size}) ADDED`);
+        openCart();
+      }
+
+      function updateQuantity(index, delta) {
+        if (!state.cart[index]) return;
+        state.cart[index].quantity += delta;
+        if (state.cart[index].quantity <= 0) {
+          state.cart.splice(index, 1);
+        }
+        saveCart();
+        updateCartUI();
+      }
+
+      function removeFromCart(index) {
+        state.cart.splice(index, 1);
+        saveCart();
+        updateCartUI();
+      }
+
+      function updateCartUI() {
+        const badge = document.getElementById('cart-badge-count');
+        const drawerCount = document.getElementById('cart-drawer-count');
+        const container = document.getElementById('cart-items-container');
+        const subtotalEl = document.getElementById('cart-subtotal');
+        const taxEl = document.getElementById('cart-tax');
+        const totalEl = document.getElementById('cart-total');
+        const checkoutBtn = document.getElementById('checkout-btn');
+        const whatsappCheckoutBtn = document.getElementById('whatsapp-checkout-btn');
+        const progressBar = document.getElementById('shipping-progress-bar');
+        const progressText = document.getElementById('shipping-progress-text');
+
+        const totalItems = state.cart.reduce((sum, item) => sum + item.quantity, 0);
+        if (badge) badge.textContent = totalItems;
+        if (drawerCount) drawerCount.textContent = `([${totalItems}])`;
+
+        const subtotal = state.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        const total = subtotal;
+
+        if (subtotalEl) subtotalEl.textContent = `₹${subtotal.toLocaleString('en-IN')}`;
+        if (taxEl) taxEl.textContent = `₹0 (INCLUDED)`;
+        if (totalEl) totalEl.textContent = `₹${total.toLocaleString('en-IN')}`;
+
+        // Shipping Progress (₹1,999 goal)
+        const shippingGoal = 1999;
+        const remaining = shippingGoal - subtotal;
+        if (subtotal === 0) {
+          if (progressBar) progressBar.style.width = '0%';
+          if (progressText) progressText.textContent = `ADD ₹1,999 FOR FREE INDIA DELIVERY`;
+        } else if (remaining > 0) {
+          const pct = Math.min(100, (subtotal / shippingGoal) * 100);
+          if (progressBar) progressBar.style.width = `${pct}%`;
+          if (progressText) progressText.textContent = `ADD ₹${remaining.toLocaleString('en-IN')} MORE FOR FREE DELIVERY`;
+        } else {
+          if (progressBar) progressBar.style.width = '100%';
+          if (progressText) progressText.textContent = `✓ FREE DELIVERY UNLOCKED (OR STORE PICKUP)`;
+        }
+
+        const isEmpty = state.cart.length === 0;
+        if (checkoutBtn) checkoutBtn.disabled = isEmpty;
+        if (whatsappCheckoutBtn) whatsappCheckoutBtn.disabled = isEmpty;
+
+        if (!container) return;
+
+        if (isEmpty) {
+          container.innerHTML = `
+            <div class="py-16 text-center space-y-3 font-mono">
+              <span class="text-4xl text-neutral-300 block">∅</span>
+              <p class="text-xs uppercase font-bold text-neutral-500">YOUR STREET DRIP BAG IS CURRENTLY EMPTY.</p>
+              <p class="text-[11px] text-neutral-400">VISIT STORE IN CHANDKHEDA OR BROWSE LATEST DROPS.</p>
+              <button onclick="closeCart()" class="px-5 py-2 bg-acid text-black border border-black font-mono text-xs font-bold uppercase hover:bg-hotpink hover:text-white transition-colors">
+                START BROWSING DROPS
+              </button>
+            </div>
+          `;
+          return;
+        }
+
+        container.innerHTML = state.cart.map((item, index) => `
+          <div class="py-3 flex gap-3 items-center">
+            <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover border border-black shrink-0" />
+            <div class="flex-1 min-w-0 font-mono text-xs">
+              <div class="font-bold text-black uppercase truncate">${item.name}</div>
+              <div class="text-[10px] text-neutral-500">SIZE: ${item.size}</div>
+              <div class="text-hotpink font-bold mt-0.5">₹${(item.price * item.quantity).toLocaleString('en-IN')}</div>
+            </div>
+            <!-- Quantity controls -->
+            <div class="flex items-center border border-black text-xs font-mono">
+              <button onclick="updateQuantity(${index}, -1)" class="px-2 py-0.5 hover:bg-neutral-200">-</button>
+              <span class="px-2 py-0.5 font-bold">${item.quantity}</span>
+              <button onclick="updateQuantity(${index}, 1)" class="px-2 py-0.5 hover:bg-neutral-200">+</button>
+            </div>
+            <button onclick="removeFromCart(${index})" class="text-neutral-400 hover:text-hotpink p-1 text-sm">✕</button>
+          </div>
+        `).join('');
+      }
+
+      function openCart() {
+        state.isCartOpen = true;
+        const panel = document.getElementById('slide-cart-panel');
+        const backdrop = document.getElementById('cart-backdrop');
+        if (panel) panel.classList.remove('translate-x-full');
+        if (backdrop) {
+          backdrop.classList.remove('opacity-0', 'pointer-events-none');
+          backdrop.classList.add('opacity-100', 'pointer-events-auto');
+        }
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeCart() {
+        state.isCartOpen = false;
+        const panel = document.getElementById('slide-cart-panel');
+        const backdrop = document.getElementById('cart-backdrop');
+        if (panel) panel.classList.add('translate-x-full');
+        if (backdrop) {
+          backdrop.classList.add('opacity-0', 'pointer-events-none');
+          backdrop.classList.remove('opacity-100', 'pointer-events-auto');
+        }
+        document.body.style.overflow = '';
+      }
+
+      // 6. WHATSAPP ORDER GENERATOR (From PDF WhatsApp Strategy)
+      function checkoutViaWhatsApp() {
+        if (state.cart.length === 0) return;
+        const itemsList = state.cart.map(i => `• ${i.name} (Size: ${i.size}) x${i.quantity} = ₹${i.price * i.quantity}`).join('\n');
+        const subtotal = state.cart.reduce((sum, i) => sum + (i.price * i.quantity), 0);
+        const msg = `Hi Street Drip Ahmedabad (+91 99244 69685)!\n\nI want to place an order from your Chandkheda collection:\n\n${itemsList}\n\nTotal: ₹${subtotal.toLocaleString('en-IN')}\n\nPlease confirm availability and delivery / store pickup in Chandkheda. Thank you!`;
+        const waUrl = `https://wa.me/919924469685?text=${encodeURIComponent(msg)}`;
+        window.open(waUrl, '_blank');
+        showToast('REDIRECTING TO STREET DRIP WHATSAPP...');
+      }
+
+      // 7. QUICK VIEW / DOSSIER MODALS
+      function openProductQuickView(id) {
+        const item = CATALOG_ITEMS.find(p => p.id === id);
+        if (item) {
+          addToCart(item.id);
+        } else {
+          addToCart(id);
+        }
+      }
+
+      function openAboutDossier() {
+        const modal = document.getElementById('dossier-modal');
+        if (modal) modal.classList.remove('hidden');
+      }
+
+      function closeAboutDossier() {
+        const modal = document.getElementById('dossier-modal');
+        if (modal) modal.classList.add('hidden');
+      }
+
+      // 8. READY MADE OUTFITS INTERACTION
+      const OUTFITS = [
+        { name: 'LOOK 01 // AHMEDABAD NOIR', img: 'https://images.unsplash.com/photo-1509967419530-da38b4704bc6?q=80&w=700&auto=format&fit=crop', price: 8996 },
+        { name: 'LOOK 02 // CHANDKHEDA ACID', img: 'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=700&auto=format&fit=crop', price: 7496 },
+        { name: 'LOOK 03 // GUJARAT REBEL', img: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=700&auto=format&fit=crop', price: 9196 }
+      ];
+      let currentOutfitIdx = 0;
+
+      function switchOutfit(idx) {
+        currentOutfitIdx = (currentOutfitIdx + 1) % OUTFITS.length;
+        const o = OUTFITS[currentOutfitIdx];
+        const img = document.getElementById('outfit-model-img');
+        const badge = document.getElementById('outfit-badge');
+        if (img) img.src = o.img;
+        if (badge) badge.textContent = o.name;
+        showToast(`SWAPPED TO ${o.name}`);
+      }
+
+      function addFullOutfitToCart() {
+        addToCart('prod-jacket');
+        addToCart('prod-tee');
+        addToCart('prod-denim-jeans');
+        addToCart('prod-boots');
+        showToast('FULL 4-PIECE STREET DRIP LOOK ADDED TO BAG!');
+      }
+
+      // 9. STORE STATUS & CLOCK INITIALIZATION (Indian Standard Time - UTC+5:30)
+      function updateStoreStatus() {
+        const now = new Date();
+        // Convert to IST
+        const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+        const istDate = new Date(utc + (3600000 * 5.5));
+        
+        const day = istDate.getDay(); // 0 = Sun, 1-6 = Mon-Sat
+        const hours = istDate.getHours();
+        const minutes = istDate.getMinutes();
+        const isOpen = (day >= 1 && day <= 6) && (hours >= 10 && hours < 20);
+
+        const badgeText = document.getElementById('store-status-text');
+        if (badgeText) {
+          if (isOpen) {
+            badgeText.textContent = `CHANDKHEDA: OPEN NOW (10AM–8PM IST)`;
+          } else if (day === 0) {
+            badgeText.textContent = `CHANDKHEDA: CLOSED (OPENS MON 10AM)`;
+          } else if (hours < 10) {
+            badgeText.textContent = `CHANDKHEDA: OPENS TODAY AT 10:00 AM`;
+          } else {
+            badgeText.textContent = `CHANDKHEDA: CLOSED FOR TODAY (OPENS 10AM)`;
+          }
+        }
+      }
+
+      // 10. EVENT LISTENERS INITIALIZATION
+      document.addEventListener('DOMContentLoaded', () => {
+        renderNewItems();
+        updateCartUI();
+        updateStoreStatus();
+        setInterval(updateStoreStatus, 60000);
+
+        // Cart Toggles
+        document.getElementById('cart-trigger-btn')?.addEventListener('click', openCart);
+        document.getElementById('cart-close-btn')?.addEventListener('click', closeCart);
+        document.getElementById('cart-backdrop')?.addEventListener('click', closeCart);
+
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
+          const panel = document.getElementById('mobile-nav-panel');
+          panel?.classList.toggle('hidden');
+        });
+
+        // Online Checkout Button
+        document.getElementById('checkout-btn')?.addEventListener('click', () => {
+          showToast('PROCEEDING TO PAYMENT / STORE PICKUP TERMINAL...');
+          setTimeout(() => {
+            alert('ORDER PLACED: Thank you for shopping with STREET DRIP AHMEDABAD! We have received your order. We will reach out via WhatsApp/Phone for confirmation.');
+            state.cart = [];
+            saveCart();
+            updateCartUI();
+            closeCart();
+          }, 600);
+        });
+
+        // Keyboard ESC closes drawer & modals
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') {
+            closeCart();
+            closeAboutDossier();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
